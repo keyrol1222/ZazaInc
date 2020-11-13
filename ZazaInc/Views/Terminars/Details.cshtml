@@ -1,0 +1,42 @@
+﻿@model ZazaInc.Models.Terminar
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Terminar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.razon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.razon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empleado.nombre_empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empleado.nombre_empleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.nombre_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.nombre_usuario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Terminar }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

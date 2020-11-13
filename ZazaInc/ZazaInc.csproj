@@ -126,7 +126,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EmpleadoesController.cs" />
+    <Compile Include="Controllers\EntrevistasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TerminarsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -218,6 +221,22 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\View.cshtml" />
+    <Content Include="Views\Empleadoes\Create.cshtml" />
+    <Content Include="Views\Empleadoes\Delete.cshtml" />
+    <Content Include="Views\Empleadoes\Details.cshtml" />
+    <Content Include="Views\Empleadoes\Edit.cshtml" />
+    <Content Include="Views\Empleadoes\Index.cshtml" />
+    <Content Include="Views\Entrevistas\Create.cshtml" />
+    <Content Include="Views\Entrevistas\Delete.cshtml" />
+    <Content Include="Views\Entrevistas\Details.cshtml" />
+    <Content Include="Views\Entrevistas\Edit.cshtml" />
+    <Content Include="Views\Entrevistas\Index.cshtml" />
+    <Content Include="Views\Terminars\Create.cshtml" />
+    <Content Include="Views\Terminars\Delete.cshtml" />
+    <Content Include="Views\Terminars\Details.cshtml" />
+    <Content Include="Views\Terminars\Edit.cshtml" />
+    <Content Include="Views\Terminars\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

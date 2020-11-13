@@ -1,0 +1,74 @@
+﻿@model ZazaInc.Models.Empleado
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Empleado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre_empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_empleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellido_empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellido_empleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.posicion_empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.posicion_empleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cedula_empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cedula_empleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correo_empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correo_empleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pago_empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pago_empleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.horario_empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.horario_empleado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_empleado }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

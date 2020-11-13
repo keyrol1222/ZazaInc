@@ -1,0 +1,42 @@
+﻿@model ZazaInc.Models.Entrevista
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Entrevista</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.notas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Solicitante.nombre_solicitante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Solicitante.nombre_solicitante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.nombre_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.nombre_usuario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_Entrevista }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

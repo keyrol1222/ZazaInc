@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ZazaInc.Models.Empleado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre_empleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellido_empleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.posicion_empleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cedula_empleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.correo_empleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pago_empleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.horario_empleado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre_empleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellido_empleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.posicion_empleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cedula_empleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.correo_empleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pago_empleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.horario_empleado)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_empleado }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_empleado }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_empleado })
+        </td>
+    </tr>
+}
+
+</table>

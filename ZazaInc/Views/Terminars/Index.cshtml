@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ZazaInc.Models.Terminar>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.razon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empleado.nombre_empleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.nombre_usuario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.razon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empleado.nombre_empleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.nombre_usuario)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Terminar }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Terminar }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Terminar })
+        </td>
+    </tr>
+}
+
+</table>
