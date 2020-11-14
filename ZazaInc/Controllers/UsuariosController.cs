@@ -63,7 +63,7 @@ namespace ZazaInc.Controllers
 
                 db.Usuarios.Add(usuario);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
 
             return View(usuario);
@@ -89,10 +89,11 @@ namespace ZazaInc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_usuario,nombre_usuario,apellido_usuario,rol_usuario,cedula_usuario,correo_usuario,contraseña_usuario,Direccion_usuario")] Usuario usuario)
+        public ActionResult Edit([Bind(Include = "id_usuario,nombre_usuario,apellido_usuario,rol_usuario,cedula_usuario,correo_usuario,Direccion_usuario")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
+                usuario.contraseña_usuario = usuario.contraseña_usuario;
                 db.Entry(usuario).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
