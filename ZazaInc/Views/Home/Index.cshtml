@@ -14,27 +14,27 @@
 
 @if (!User.Identity.IsAuthenticated)
 {
-    <div class="container">
+<div class="container">
 
-        <form action="/Home/Login" method="post">
+    <form action="/Home/Login" method="post">
 
-            <div class="form-group">
+        <div class="form-group">
 
-                <label>Ingresa tu correo</label>
-                <input type="text" name="correo_usuario" value=""/>
-            </div>
-            <div class="form-group">
+            <label>Ingresa tu correo</label>
+            <input type="text" name="correo_usuario" value="" />
+        </div>
+        <div class="form-group">
 
-                <label>Ingresa tu contraseña</label>
-                <input type="password" name="contraseña_usuario" value="" />
-            </div>
+            <label>Ingresa tu contraseña</label>
+            <input type="password" name="contraseña_usuario" value="" />
+        </div>
 
 
-            <div class="form-group">
-                <button>Log in</button>
-            </div>
-        </form>
-
-    </div>
+        <div class="form-group">
+            <button>Log in</button>
+        </div>
+    </form>
+    <li>@Html.ActionLink("Registrar", "Create", "Usuarios")</li>
+</div>
 
 }

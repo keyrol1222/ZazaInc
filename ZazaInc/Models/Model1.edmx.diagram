@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3c06a2aab34a444580cbe4d69891cc3e" Name="Diagram1">
-        <EntityTypeShape EntityType="DBZazaIncModel.Empleado" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBZazaIncModel.Entrevista" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBZazaIncModel.Solicitante" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBZazaIncModel.Terminar" Width="1.5" PointX="5.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBZazaIncModel.Usuario" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBZazaIncModel.Vacacione" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="DBZazaIncModel.FK__Vacacione__id_em__15502E78" ManuallyRouted="false" />
-        <AssociationConnector Association="DBZazaIncModel.FK__Entrevist__Id_so__1DE57479" ManuallyRouted="false" />
-        <AssociationConnector Association="DBZazaIncModel.FK__Entrevist__Id_us__1CF15040" ManuallyRouted="false" />
-        <AssociationConnector Association="DBZazaIncModel.FK__Vacacione__id_us__145C0A3F" ManuallyRouted="false" />
-        <AssociationConnector Association="DBZazaIncModel.FK__Terminar__id_emp__1ED998B2" />
-        <AssociationConnector Association="DBZazaIncModel.FK__Terminar__id_usu__1FCDBCEB" />
+      <Diagram DiagramId="18031aa456de4bf2919ade104bb2932b" Name="Diagram1">
+        <EntityTypeShape EntityType="DBZazaIncModel.Empleado" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBZazaIncModel.Entrevista" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBZazaIncModel.Solicitante" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBZazaIncModel.Terminar" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBZazaIncModel.Usuario" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBZazaIncModel.Vacacione" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="DBZazaIncModel.FK__Terminar__id_emp__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="DBZazaIncModel.FK__Vacacione__id_em__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="DBZazaIncModel.FK__Entrevist__Id_so__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="DBZazaIncModel.FK__Entrevist__Id_us__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="DBZazaIncModel.FK__Terminar__id_usu__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="DBZazaIncModel.FK__Vacacione__id_us__286302EC" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

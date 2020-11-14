@@ -29,7 +29,7 @@ namespace ZazaInc.Controllers
             if (!string.IsNullOrEmpty(correo_usuario) && !string.IsNullOrEmpty(contraseña_usuario))
             {
 
-                DBZazaIncEntities dB = new DBZazaIncEntities();
+                DBZazaIncEntities1 dB = new DBZazaIncEntities1();
                 var user = dB.Usuarios.FirstOrDefault(e => e.correo_usuario == correo_usuario && e.contraseña_usuario == contraseña_usuario);
 
                 if (user != null)

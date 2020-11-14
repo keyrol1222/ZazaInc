@@ -10,107 +10,107 @@ using ZazaInc.Models;
 
 namespace ZazaInc.Controllers
 {
-    public class EmpleadoesController : Controller
+    public class SolicitantesController : Controller
     {
         private DBZazaIncEntities1 db = new DBZazaIncEntities1();
 
-        // GET: Empleadoes
+        // GET: Solicitantes
         public ActionResult Index()
         {
-            return View(db.Empleadoes.ToList());
+            return View(db.Solicitantes.ToList());
         }
 
-        // GET: Empleadoes/Details/5
+        // GET: Solicitantes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empleado empleado = db.Empleadoes.Find(id);
-            if (empleado == null)
+            Solicitante solicitante = db.Solicitantes.Find(id);
+            if (solicitante == null)
             {
                 return HttpNotFound();
             }
-            return View(empleado);
+            return View(solicitante);
         }
 
-        // GET: Empleadoes/Create
+        // GET: Solicitantes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Empleadoes/Create
+        // POST: Solicitantes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_empleado,nombre_empleado,apellido_empleado,posicion_empleado,cedula_empleado,correo_usuario,pago_empleado,horario_empleado")] Empleado empleado)
+        public ActionResult Create([Bind(Include = "id_Solicitante,nombre_Solicitante,apellido_Solicitante,cedula_Solicitante,correo_Solicitante")] Solicitante solicitante)
         {
             if (ModelState.IsValid)
             {
-                db.Empleadoes.Add(empleado);
+                db.Solicitantes.Add(solicitante);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(empleado);
+            return View(solicitante);
         }
 
-        // GET: Empleadoes/Edit/5
+        // GET: Solicitantes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empleado empleado = db.Empleadoes.Find(id);
-            if (empleado == null)
+            Solicitante solicitante = db.Solicitantes.Find(id);
+            if (solicitante == null)
             {
                 return HttpNotFound();
             }
-            return View(empleado);
+            return View(solicitante);
         }
 
-        // POST: Empleadoes/Edit/5
+        // POST: Solicitantes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_empleado,nombre_empleado,apellido_empleado,posicion_empleado,cedula_empleado,correo_usuario,pago_empleado,horario_empleado")] Empleado empleado)
+        public ActionResult Edit([Bind(Include = "id_Solicitante,nombre_Solicitante,apellido_Solicitante,cedula_Solicitante,correo_Solicitante")] Solicitante solicitante)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(empleado).State = EntityState.Modified;
+                db.Entry(solicitante).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(empleado);
+            return View(solicitante);
         }
 
-        // GET: Empleadoes/Delete/5
+        // GET: Solicitantes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empleado empleado = db.Empleadoes.Find(id);
-            if (empleado == null)
+            Solicitante solicitante = db.Solicitantes.Find(id);
+            if (solicitante == null)
             {
                 return HttpNotFound();
             }
-            return View(empleado);
+            return View(solicitante);
         }
 
-        // POST: Empleadoes/Delete/5
+        // POST: Solicitantes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Empleado empleado = db.Empleadoes.Find(id);
-            db.Empleadoes.Remove(empleado);
+            Solicitante solicitante = db.Solicitantes.Find(id);
+            db.Solicitantes.Remove(solicitante);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

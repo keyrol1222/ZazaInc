@@ -12,7 +12,7 @@ namespace ZazaInc.Controllers
 {
     public class TerminarsController : Controller
     {
-        private DBZazaIncEntities db = new DBZazaIncEntities();
+        private DBZazaIncEntities1 db = new DBZazaIncEntities1();
 
         // GET: Terminars
         public ActionResult Index()

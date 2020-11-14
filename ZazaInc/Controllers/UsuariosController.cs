@@ -10,107 +10,118 @@ using ZazaInc.Models;
 
 namespace ZazaInc.Controllers
 {
-    public class EmpleadoesController : Controller
+    public class UsuariosController : Controller
     {
         private DBZazaIncEntities1 db = new DBZazaIncEntities1();
 
-        // GET: Empleadoes
+        // GET: Usuarios
         public ActionResult Index()
         {
-            return View(db.Empleadoes.ToList());
+            return View(db.Usuarios.ToList());
         }
 
-        // GET: Empleadoes/Details/5
+        // GET: Usuarios/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empleado empleado = db.Empleadoes.Find(id);
-            if (empleado == null)
+            Usuario usuario = db.Usuarios.Find(id);
+            if (usuario == null)
             {
                 return HttpNotFound();
             }
-            return View(empleado);
+            return View(usuario);
         }
 
-        // GET: Empleadoes/Create
+        // GET: Usuarios/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Empleadoes/Create
+        // POST: Usuarios/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_empleado,nombre_empleado,apellido_empleado,posicion_empleado,cedula_empleado,correo_usuario,pago_empleado,horario_empleado")] Empleado empleado)
+        public ActionResult Create([Bind(Include = "id_usuario,nombre_usuario,apellido_usuario,rol_usuario,cedula_usuario,correo_usuario,contraseña_usuario,Direccion_usuario")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
-                db.Empleadoes.Add(empleado);
+                var comparar = db.Empleadoes.FirstOrDefault(e => e.correo_usuario == usuario.correo_usuario);
+
+                if (comparar != null)
+                {
+                    usuario.rol_usuario = "Empleado";
+                }
+                else
+                {
+                    usuario.rol_usuario = "Solicitante";
+                }
+
+                db.Usuarios.Add(usuario);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(empleado);
+            return View(usuario);
         }
 
-        // GET: Empleadoes/Edit/5
+        // GET: Usuarios/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empleado empleado = db.Empleadoes.Find(id);
-            if (empleado == null)
+            Usuario usuario = db.Usuarios.Find(id);
+            if (usuario == null)
             {
                 return HttpNotFound();
             }
-            return View(empleado);
+            return View(usuario);
         }
 
-        // POST: Empleadoes/Edit/5
+        // POST: Usuarios/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_empleado,nombre_empleado,apellido_empleado,posicion_empleado,cedula_empleado,correo_usuario,pago_empleado,horario_empleado")] Empleado empleado)
+        public ActionResult Edit([Bind(Include = "id_usuario,nombre_usuario,apellido_usuario,rol_usuario,cedula_usuario,correo_usuario,contraseña_usuario,Direccion_usuario")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(empleado).State = EntityState.Modified;
+                db.Entry(usuario).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(empleado);
+            return View(usuario);
         }
 
-        // GET: Empleadoes/Delete/5
+        // GET: Usuarios/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empleado empleado = db.Empleadoes.Find(id);
-            if (empleado == null)
+            Usuario usuario = db.Usuarios.Find(id);
+            if (usuario == null)
             {
                 return HttpNotFound();
             }
-            return View(empleado);
+            return View(usuario);
         }
 
-        // POST: Empleadoes/Delete/5
+        // POST: Usuarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Empleado empleado = db.Empleadoes.Find(id);
-            db.Empleadoes.Remove(empleado);
+            Usuario usuario = db.Usuarios.Find(id);
+            db.Usuarios.Remove(usuario);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

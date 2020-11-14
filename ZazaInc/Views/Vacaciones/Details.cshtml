@@ -1,0 +1,50 @@
+﻿@model ZazaInc.Models.Vacacione
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Vacacione</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_final)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_final)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empleado.nombre_empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empleado.nombre_empleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.nombre_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.nombre_usuario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_vacaciones }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

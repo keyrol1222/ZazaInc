@@ -4,17 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DBZazaIncModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DBZazaIncModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Empleado">
           <Key>
             <PropertyRef Name="id_empleado" />
           </Key>
-          <Property Name="id_empleado" Type="int" Nullable="false" />
+          <Property Name="id_empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre_empleado" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="apellido_empleado" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="posicion_empleado" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="posicion_empleado" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="cedula_empleado" Type="int" Nullable="false" />
-          <Property Name="correo_empleado" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="correo_usuario" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="pago_empleado" Type="int" Nullable="false" />
           <Property Name="horario_empleado" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
@@ -22,17 +22,17 @@
           <Key>
             <PropertyRef Name="id_Entrevista" />
           </Key>
-          <Property Name="id_Entrevista" Type="int" Nullable="false" />
+          <Property Name="id_Entrevista" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_usuario" Type="int" Nullable="false" />
           <Property Name="Id_solicitante" Type="int" Nullable="false" />
-          <Property Name="notas" Type="text" Nullable="false" />
+          <Property Name="notas" Type="varchar" MaxLength="1" />
         </EntityType>
         <EntityType Name="Solicitante">
           <Key>
-            <PropertyRef Name="id_solicitante" />
+            <PropertyRef Name="id_Solicitante" />
           </Key>
-          <Property Name="id_solicitante" Type="int" Nullable="false" />
-          <Property Name="nombre_solicitante" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="id_Solicitante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_Solicitante" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="apellido_Solicitante" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="cedula_Solicitante" Type="int" Nullable="false" />
           <Property Name="correo_Solicitante" Type="varchar" MaxLength="30" Nullable="false" />
@@ -41,16 +41,16 @@
           <Key>
             <PropertyRef Name="ID_Terminar" />
           </Key>
-          <Property Name="ID_Terminar" Type="int" Nullable="false" />
+          <Property Name="ID_Terminar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_usuario" Type="int" Nullable="false" />
           <Property Name="id_empleado" Type="int" Nullable="false" />
-          <Property Name="razon" Type="text" Nullable="false" />
+          <Property Name="razon" Type="varchar" MaxLength="1" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="id_usuario" />
           </Key>
-          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre_usuario" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="apellido_usuario" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="rol_usuario" Type="varchar" MaxLength="20" Nullable="false" />
@@ -59,29 +59,29 @@
           <Property Name="contraseña_usuario" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Direccion_usuario" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <EntityType Name="Vacaciones">
+        <EntityType Name="Vacacione">
           <Key>
             <PropertyRef Name="id_vacaciones" />
           </Key>
-          <Property Name="id_vacaciones" Type="int" Nullable="false" />
+          <Property Name="id_vacaciones" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="fecha_inicio" Type="datetime" Nullable="false" />
           <Property Name="fecha_final" Type="datetime" Nullable="false" />
           <Property Name="id_usuario" Type="int" Nullable="false" />
           <Property Name="id_empleado" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Entrevist__Id_so__1DE57479">
+        <Association Name="FK__Entrevist__Id_so__30F848ED">
           <End Role="Solicitante" Type="Self.Solicitante" Multiplicity="1" />
           <End Role="Entrevista" Type="Self.Entrevista" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Solicitante">
-              <PropertyRef Name="id_solicitante" />
+              <PropertyRef Name="id_Solicitante" />
             </Principal>
             <Dependent Role="Entrevista">
               <PropertyRef Name="Id_solicitante" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Entrevist__Id_us__1CF15040">
+        <Association Name="FK__Entrevist__Id_us__300424B4">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Entrevista" Type="Self.Entrevista" Multiplicity="*" />
           <ReferentialConstraint>
@@ -93,7 +93,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Terminar__id_emp__1ED998B2">
+        <Association Name="FK__Terminar__id_emp__2D27B809">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
           <End Role="Terminar" Type="Self.Terminar" Multiplicity="*" />
           <ReferentialConstraint>
@@ -105,7 +105,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Terminar__id_usu__1FCDBCEB">
+        <Association Name="FK__Terminar__id_usu__2C3393D0">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Terminar" Type="Self.Terminar" Multiplicity="*" />
           <ReferentialConstraint>
@@ -117,26 +117,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vacacione__id_em__15502E78">
+        <Association Name="FK__Vacacione__id_em__29572725">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
-          <End Role="Vacaciones" Type="Self.Vacaciones" Multiplicity="*" />
+          <End Role="Vacacione" Type="Self.Vacacione" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Empleado">
               <PropertyRef Name="id_empleado" />
             </Principal>
-            <Dependent Role="Vacaciones">
+            <Dependent Role="Vacacione">
               <PropertyRef Name="id_empleado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vacacione__id_us__145C0A3F">
+        <Association Name="FK__Vacacione__id_us__286302EC">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
-          <End Role="Vacaciones" Type="Self.Vacaciones" Multiplicity="*" />
+          <End Role="Vacacione" Type="Self.Vacacione" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
               <PropertyRef Name="id_usuario" />
             </Principal>
-            <Dependent Role="Vacaciones">
+            <Dependent Role="Vacacione">
               <PropertyRef Name="id_usuario" />
             </Dependent>
           </ReferentialConstraint>
@@ -147,33 +147,34 @@
           <EntitySet Name="Solicitante" EntityType="Self.Solicitante" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Terminar" EntityType="Self.Terminar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Vacaciones" EntityType="Self.Vacaciones" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Entrevist__Id_so__1DE57479" Association="Self.FK__Entrevist__Id_so__1DE57479">
+          <EntitySet Name="Vacacione" EntityType="Self.Vacacione" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Entrevist__Id_so__30F848ED" Association="Self.FK__Entrevist__Id_so__30F848ED">
             <End Role="Solicitante" EntitySet="Solicitante" />
             <End Role="Entrevista" EntitySet="Entrevista" />
           </AssociationSet>
-          <AssociationSet Name="FK__Entrevist__Id_us__1CF15040" Association="Self.FK__Entrevist__Id_us__1CF15040">
+          <AssociationSet Name="FK__Entrevist__Id_us__300424B4" Association="Self.FK__Entrevist__Id_us__300424B4">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Entrevista" EntitySet="Entrevista" />
           </AssociationSet>
-          <AssociationSet Name="FK__Terminar__id_emp__1ED998B2" Association="Self.FK__Terminar__id_emp__1ED998B2">
+          <AssociationSet Name="FK__Terminar__id_emp__2D27B809" Association="Self.FK__Terminar__id_emp__2D27B809">
             <End Role="Empleado" EntitySet="Empleado" />
             <End Role="Terminar" EntitySet="Terminar" />
           </AssociationSet>
-          <AssociationSet Name="FK__Terminar__id_usu__1FCDBCEB" Association="Self.FK__Terminar__id_usu__1FCDBCEB">
+          <AssociationSet Name="FK__Terminar__id_usu__2C3393D0" Association="Self.FK__Terminar__id_usu__2C3393D0">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Terminar" EntitySet="Terminar" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vacacione__id_em__15502E78" Association="Self.FK__Vacacione__id_em__15502E78">
+          <AssociationSet Name="FK__Vacacione__id_em__29572725" Association="Self.FK__Vacacione__id_em__29572725">
             <End Role="Empleado" EntitySet="Empleado" />
-            <End Role="Vacaciones" EntitySet="Vacaciones" />
+            <End Role="Vacacione" EntitySet="Vacacione" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vacacione__id_us__145C0A3F" Association="Self.FK__Vacacione__id_us__145C0A3F">
+          <AssociationSet Name="FK__Vacacione__id_us__286302EC" Association="Self.FK__Vacacione__id_us__286302EC">
             <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Vacaciones" EntitySet="Vacaciones" />
+            <End Role="Vacacione" EntitySet="Vacacione" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBZazaIncModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -181,55 +182,55 @@
           <Key>
             <PropertyRef Name="id_empleado" />
           </Key>
-          <Property Name="id_empleado" Type="Int32" Nullable="false" />
+          <Property Name="id_empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre_empleado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="apellido_empleado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="posicion_empleado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="posicion_empleado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cedula_empleado" Type="Int32" Nullable="false" />
-          <Property Name="correo_empleado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="correo_usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="pago_empleado" Type="Int32" Nullable="false" />
           <Property Name="horario_empleado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Vacaciones" Relationship="Self.FK__Vacacione__id_em__15502E78" FromRole="Empleado" ToRole="Vacaciones" />
-          <NavigationProperty Name="Terminars" Relationship="DBZazaIncModel.FK__Terminar__id_emp__1ED998B2" FromRole="Empleado" ToRole="Terminar" />
+          <NavigationProperty Name="Terminars" Relationship="Self.FK__Terminar__id_emp__2D27B809" FromRole="Empleado" ToRole="Terminar" />
+          <NavigationProperty Name="Vacaciones" Relationship="Self.FK__Vacacione__id_em__29572725" FromRole="Empleado" ToRole="Vacacione" />
         </EntityType>
         <EntityType Name="Entrevista">
           <Key>
             <PropertyRef Name="id_Entrevista" />
           </Key>
-          <Property Name="id_Entrevista" Type="Int32" Nullable="false" />
+          <Property Name="id_Entrevista" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Id_usuario" Type="Int32" Nullable="false" />
           <Property Name="Id_solicitante" Type="Int32" Nullable="false" />
-          <Property Name="notas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Solicitante" Relationship="Self.FK__Entrevist__Id_so__1DE57479" FromRole="Entrevista" ToRole="Solicitante" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Entrevist__Id_us__1CF15040" FromRole="Entrevista" ToRole="Usuario" />
+          <Property Name="notas" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Solicitante" Relationship="Self.FK__Entrevist__Id_so__30F848ED" FromRole="Entrevista" ToRole="Solicitante" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Entrevist__Id_us__300424B4" FromRole="Entrevista" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Solicitante">
           <Key>
-            <PropertyRef Name="id_solicitante" />
+            <PropertyRef Name="id_Solicitante" />
           </Key>
-          <Property Name="id_solicitante" Type="Int32" Nullable="false" />
-          <Property Name="nombre_solicitante" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_Solicitante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_Solicitante" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="apellido_Solicitante" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cedula_Solicitante" Type="Int32" Nullable="false" />
           <Property Name="correo_Solicitante" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Entrevistas" Relationship="Self.FK__Entrevist__Id_so__1DE57479" FromRole="Solicitante" ToRole="Entrevista" />
+          <NavigationProperty Name="Entrevistas" Relationship="Self.FK__Entrevist__Id_so__30F848ED" FromRole="Solicitante" ToRole="Entrevista" />
         </EntityType>
         <EntityType Name="Terminar">
           <Key>
             <PropertyRef Name="ID_Terminar" />
           </Key>
-          <Property Name="ID_Terminar" Type="Int32" Nullable="false" />
+          <Property Name="ID_Terminar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_usuario" Type="Int32" Nullable="false" />
           <Property Name="id_empleado" Type="Int32" Nullable="false" />
-          <Property Name="razon" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Empleado" Relationship="DBZazaIncModel.FK__Terminar__id_emp__1ED998B2" FromRole="Terminar" ToRole="Empleado" />
-          <NavigationProperty Name="Usuario" Relationship="DBZazaIncModel.FK__Terminar__id_usu__1FCDBCEB" FromRole="Terminar" ToRole="Usuario" />
+          <Property Name="razon" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Terminar__id_emp__2D27B809" FromRole="Terminar" ToRole="Empleado" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Terminar__id_usu__2C3393D0" FromRole="Terminar" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="id_usuario" />
           </Key>
-          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre_usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="apellido_usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="rol_usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
@@ -237,47 +238,59 @@
           <Property Name="correo_usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="contraseña_usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Direccion_usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Entrevistas" Relationship="Self.FK__Entrevist__Id_us__1CF15040" FromRole="Usuario" ToRole="Entrevista" />
-          <NavigationProperty Name="Vacaciones" Relationship="Self.FK__Vacacione__id_us__145C0A3F" FromRole="Usuario" ToRole="Vacaciones" />
-          <NavigationProperty Name="Terminars" Relationship="DBZazaIncModel.FK__Terminar__id_usu__1FCDBCEB" FromRole="Usuario" ToRole="Terminar" />
+          <NavigationProperty Name="Entrevistas" Relationship="Self.FK__Entrevist__Id_us__300424B4" FromRole="Usuario" ToRole="Entrevista" />
+          <NavigationProperty Name="Terminars" Relationship="Self.FK__Terminar__id_usu__2C3393D0" FromRole="Usuario" ToRole="Terminar" />
+          <NavigationProperty Name="Vacaciones" Relationship="Self.FK__Vacacione__id_us__286302EC" FromRole="Usuario" ToRole="Vacacione" />
         </EntityType>
         <EntityType Name="Vacacione">
           <Key>
             <PropertyRef Name="id_vacaciones" />
           </Key>
-          <Property Name="id_vacaciones" Type="Int32" Nullable="false" />
+          <Property Name="id_vacaciones" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="fecha_inicio" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="fecha_final" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="id_usuario" Type="Int32" Nullable="false" />
           <Property Name="id_empleado" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Empleado" Relationship="Self.FK__Vacacione__id_em__15502E78" FromRole="Vacaciones" ToRole="Empleado" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Vacacione__id_us__145C0A3F" FromRole="Vacaciones" ToRole="Usuario" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Vacacione__id_em__29572725" FromRole="Vacacione" ToRole="Empleado" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Vacacione__id_us__286302EC" FromRole="Vacacione" ToRole="Usuario" />
         </EntityType>
-        <Association Name="FK__Vacacione__id_em__15502E78">
+        <Association Name="FK__Terminar__id_emp__2D27B809">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
-          <End Role="Vacaciones" Type="Self.Vacacione" Multiplicity="*" />
+          <End Role="Terminar" Type="Self.Terminar" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Empleado">
               <PropertyRef Name="id_empleado" />
             </Principal>
-            <Dependent Role="Vacaciones">
+            <Dependent Role="Terminar">
               <PropertyRef Name="id_empleado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Entrevist__Id_so__1DE57479">
+        <Association Name="FK__Vacacione__id_em__29572725">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Vacacione" Type="Self.Vacacione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="id_empleado" />
+            </Principal>
+            <Dependent Role="Vacacione">
+              <PropertyRef Name="id_empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Entrevist__Id_so__30F848ED">
           <End Role="Solicitante" Type="Self.Solicitante" Multiplicity="1" />
           <End Role="Entrevista" Type="Self.Entrevista" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Solicitante">
-              <PropertyRef Name="id_solicitante" />
+              <PropertyRef Name="id_Solicitante" />
             </Principal>
             <Dependent Role="Entrevista">
               <PropertyRef Name="Id_solicitante" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Entrevist__Id_us__1CF15040">
+        <Association Name="FK__Entrevist__Id_us__300424B4">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Entrevista" Type="Self.Entrevista" Multiplicity="*" />
           <ReferentialConstraint>
@@ -289,80 +302,68 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vacacione__id_us__145C0A3F">
+        <Association Name="FK__Terminar__id_usu__2C3393D0">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
-          <End Role="Vacaciones" Type="Self.Vacacione" Multiplicity="*" />
+          <End Role="Terminar" Type="Self.Terminar" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
               <PropertyRef Name="id_usuario" />
             </Principal>
-            <Dependent Role="Vacaciones">
+            <Dependent Role="Terminar">
               <PropertyRef Name="id_usuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBZazaIncEntities" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK__Vacacione__id_us__286302EC">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Vacacione" Type="Self.Vacacione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Vacacione">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBZazaIncEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Empleadoes" EntityType="Self.Empleado" />
           <EntitySet Name="Entrevistas" EntityType="Self.Entrevista" />
           <EntitySet Name="Solicitantes" EntityType="Self.Solicitante" />
           <EntitySet Name="Terminars" EntityType="Self.Terminar" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
           <EntitySet Name="Vacaciones" EntityType="Self.Vacacione" />
-          <AssociationSet Name="FK__Vacacione__id_em__15502E78" Association="Self.FK__Vacacione__id_em__15502E78">
+          <AssociationSet Name="FK__Terminar__id_emp__2D27B809" Association="Self.FK__Terminar__id_emp__2D27B809">
             <End Role="Empleado" EntitySet="Empleadoes" />
-            <End Role="Vacaciones" EntitySet="Vacaciones" />
+            <End Role="Terminar" EntitySet="Terminars" />
           </AssociationSet>
-          <AssociationSet Name="FK__Entrevist__Id_so__1DE57479" Association="Self.FK__Entrevist__Id_so__1DE57479">
+          <AssociationSet Name="FK__Vacacione__id_em__29572725" Association="Self.FK__Vacacione__id_em__29572725">
+            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Vacacione" EntitySet="Vacaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Entrevist__Id_so__30F848ED" Association="Self.FK__Entrevist__Id_so__30F848ED">
             <End Role="Solicitante" EntitySet="Solicitantes" />
             <End Role="Entrevista" EntitySet="Entrevistas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Entrevist__Id_us__1CF15040" Association="Self.FK__Entrevist__Id_us__1CF15040">
+          <AssociationSet Name="FK__Entrevist__Id_us__300424B4" Association="Self.FK__Entrevist__Id_us__300424B4">
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="Entrevista" EntitySet="Entrevistas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vacacione__id_us__145C0A3F" Association="Self.FK__Vacacione__id_us__145C0A3F">
-            <End Role="Usuario" EntitySet="Usuarios" />
-            <End Role="Vacaciones" EntitySet="Vacaciones" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Terminar__id_emp__1ED998B2" Association="DBZazaIncModel.FK__Terminar__id_emp__1ED998B2">
-            <End Role="Empleado" EntitySet="Empleadoes" />
-            <End Role="Terminar" EntitySet="Terminars" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Terminar__id_usu__1FCDBCEB" Association="DBZazaIncModel.FK__Terminar__id_usu__1FCDBCEB">
+          <AssociationSet Name="FK__Terminar__id_usu__2C3393D0" Association="Self.FK__Terminar__id_usu__2C3393D0">
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="Terminar" EntitySet="Terminars" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vacacione__id_us__286302EC" Association="Self.FK__Vacacione__id_us__286302EC">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Vacacione" EntitySet="Vacaciones" />
           </AssociationSet>
         </EntityContainer>
-        <Association Name="FK__Terminar__id_emp__1ED998B2">
-          <End Type="DBZazaIncModel.Empleado" Role="Empleado" Multiplicity="1" />
-          <End Type="DBZazaIncModel.Terminar" Role="Terminar" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleado">
-              <PropertyRef Name="id_empleado" />
-            </Principal>
-            <Dependent Role="Terminar">
-              <PropertyRef Name="id_empleado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Terminar__id_usu__1FCDBCEB">
-          <End Type="DBZazaIncModel.Usuario" Role="Usuario" Multiplicity="1" />
-          <End Type="DBZazaIncModel.Terminar" Role="Terminar" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="id_usuario" />
-            </Principal>
-            <Dependent Role="Terminar">
-              <PropertyRef Name="id_usuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBZazaIncModelStoreContainer" CdmEntityContainer="DBZazaIncEntities">
+        <EntityContainerMapping StorageEntityContainer="DBZazaIncModelStoreContainer" CdmEntityContainer="DBZazaIncEntities1">
           <EntitySetMapping Name="Empleadoes">
             <EntityTypeMapping TypeName="DBZazaIncModel.Empleado">
               <MappingFragment StoreEntitySet="Empleado">
@@ -371,7 +372,7 @@
                 <ScalarProperty Name="apellido_empleado" ColumnName="apellido_empleado" />
                 <ScalarProperty Name="posicion_empleado" ColumnName="posicion_empleado" />
                 <ScalarProperty Name="cedula_empleado" ColumnName="cedula_empleado" />
-                <ScalarProperty Name="correo_empleado" ColumnName="correo_empleado" />
+                <ScalarProperty Name="correo_usuario" ColumnName="correo_usuario" />
                 <ScalarProperty Name="pago_empleado" ColumnName="pago_empleado" />
                 <ScalarProperty Name="horario_empleado" ColumnName="horario_empleado" />
               </MappingFragment>
@@ -390,8 +391,8 @@
           <EntitySetMapping Name="Solicitantes">
             <EntityTypeMapping TypeName="DBZazaIncModel.Solicitante">
               <MappingFragment StoreEntitySet="Solicitante">
-                <ScalarProperty Name="id_solicitante" ColumnName="id_solicitante" />
-                <ScalarProperty Name="nombre_solicitante" ColumnName="nombre_solicitante" />
+                <ScalarProperty Name="id_Solicitante" ColumnName="id_Solicitante" />
+                <ScalarProperty Name="nombre_Solicitante" ColumnName="nombre_Solicitante" />
                 <ScalarProperty Name="apellido_Solicitante" ColumnName="apellido_Solicitante" />
                 <ScalarProperty Name="cedula_Solicitante" ColumnName="cedula_Solicitante" />
                 <ScalarProperty Name="correo_Solicitante" ColumnName="correo_Solicitante" />
@@ -424,7 +425,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="Vacaciones">
             <EntityTypeMapping TypeName="DBZazaIncModel.Vacacione">
-              <MappingFragment StoreEntitySet="Vacaciones">
+              <MappingFragment StoreEntitySet="Vacacione">
                 <ScalarProperty Name="id_vacaciones" ColumnName="id_vacaciones" />
                 <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
                 <ScalarProperty Name="fecha_final" ColumnName="fecha_final" />

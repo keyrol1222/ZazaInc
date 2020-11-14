@@ -200,7 +200,10 @@
     <Compile Include="Controllers\EmpleadoesController.cs" />
     <Compile Include="Controllers\EntrevistasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SolicitantesController.cs" />
     <Compile Include="Controllers\TerminarsController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="Controllers\VacacionesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -250,8 +253,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -298,16 +301,31 @@
     <Content Include="Views\Empleadoes\Details.cshtml" />
     <Content Include="Views\Empleadoes\Edit.cshtml" />
     <Content Include="Views\Empleadoes\Index.cshtml" />
-    <Content Include="Views\Entrevistas\Create.cshtml" />
-    <Content Include="Views\Entrevistas\Delete.cshtml" />
-    <Content Include="Views\Entrevistas\Details.cshtml" />
-    <Content Include="Views\Entrevistas\Edit.cshtml" />
-    <Content Include="Views\Entrevistas\Index.cshtml" />
+    <Content Include="Views\Usuarios\Create.cshtml" />
+    <Content Include="Views\Usuarios\Delete.cshtml" />
+    <Content Include="Views\Usuarios\Details.cshtml" />
+    <Content Include="Views\Usuarios\Edit.cshtml" />
+    <Content Include="Views\Usuarios\Index.cshtml" />
     <Content Include="Views\Terminars\Create.cshtml" />
     <Content Include="Views\Terminars\Delete.cshtml" />
     <Content Include="Views\Terminars\Details.cshtml" />
     <Content Include="Views\Terminars\Edit.cshtml" />
     <Content Include="Views\Terminars\Index.cshtml" />
+    <Content Include="Views\Vacaciones\Create.cshtml" />
+    <Content Include="Views\Vacaciones\Delete.cshtml" />
+    <Content Include="Views\Vacaciones\Details.cshtml" />
+    <Content Include="Views\Vacaciones\Edit.cshtml" />
+    <Content Include="Views\Vacaciones\Index.cshtml" />
+    <Content Include="Views\Entrevistas\Create.cshtml" />
+    <Content Include="Views\Entrevistas\Delete.cshtml" />
+    <Content Include="Views\Entrevistas\Details.cshtml" />
+    <Content Include="Views\Entrevistas\Edit.cshtml" />
+    <Content Include="Views\Entrevistas\Index.cshtml" />
+    <Content Include="Views\Solicitantes\Create.cshtml" />
+    <Content Include="Views\Solicitantes\Delete.cshtml" />
+    <Content Include="Views\Solicitantes\Details.cshtml" />
+    <Content Include="Views\Solicitantes\Edit.cshtml" />
+    <Content Include="Views\Solicitantes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

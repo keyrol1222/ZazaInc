@@ -18,8 +18,8 @@ namespace ZazaInc.Models
         public Usuario()
         {
             this.Entrevistas = new HashSet<Entrevista>();
-            this.Vacaciones = new HashSet<Vacacione>();
             this.Terminars = new HashSet<Terminar>();
+            this.Vacaciones = new HashSet<Vacacione>();
         }
     
         public int id_usuario { get; set; }
@@ -34,8 +34,8 @@ namespace ZazaInc.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Entrevista> Entrevistas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vacacione> Vacaciones { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Terminar> Terminars { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Vacacione> Vacaciones { get; set; }
     }
 }

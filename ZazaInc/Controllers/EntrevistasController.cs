@@ -12,7 +12,7 @@ namespace ZazaInc.Controllers
 {
     public class EntrevistasController : Controller
     {
-        private DBZazaIncEntities db = new DBZazaIncEntities();
+        private DBZazaIncEntities1 db = new DBZazaIncEntities1();
 
         // GET: Entrevistas
         public ActionResult Index()
@@ -39,7 +39,7 @@ namespace ZazaInc.Controllers
         // GET: Entrevistas/Create
         public ActionResult Create()
         {
-            ViewBag.Id_solicitante = new SelectList(db.Solicitantes, "id_solicitante", "nombre_solicitante");
+            ViewBag.Id_solicitante = new SelectList(db.Solicitantes, "id_Solicitante", "nombre_Solicitante");
             ViewBag.Id_usuario = new SelectList(db.Usuarios, "id_usuario", "nombre_usuario");
             return View();
         }
@@ -58,7 +58,7 @@ namespace ZazaInc.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id_solicitante = new SelectList(db.Solicitantes, "id_solicitante", "nombre_solicitante", entrevista.Id_solicitante);
+            ViewBag.Id_solicitante = new SelectList(db.Solicitantes, "id_Solicitante", "nombre_Solicitante", entrevista.Id_solicitante);
             ViewBag.Id_usuario = new SelectList(db.Usuarios, "id_usuario", "nombre_usuario", entrevista.Id_usuario);
             return View(entrevista);
         }
@@ -75,7 +75,7 @@ namespace ZazaInc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Id_solicitante = new SelectList(db.Solicitantes, "id_solicitante", "nombre_solicitante", entrevista.Id_solicitante);
+            ViewBag.Id_solicitante = new SelectList(db.Solicitantes, "id_Solicitante", "nombre_Solicitante", entrevista.Id_solicitante);
             ViewBag.Id_usuario = new SelectList(db.Usuarios, "id_usuario", "nombre_usuario", entrevista.Id_usuario);
             return View(entrevista);
         }
@@ -93,7 +93,7 @@ namespace ZazaInc.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Id_solicitante = new SelectList(db.Solicitantes, "id_solicitante", "nombre_solicitante", entrevista.Id_solicitante);
+            ViewBag.Id_solicitante = new SelectList(db.Solicitantes, "id_Solicitante", "nombre_Solicitante", entrevista.Id_solicitante);
             ViewBag.Id_usuario = new SelectList(db.Usuarios, "id_usuario", "nombre_usuario", entrevista.Id_usuario);
             return View(entrevista);
         }

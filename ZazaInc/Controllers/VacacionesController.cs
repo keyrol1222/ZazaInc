@@ -10,107 +10,116 @@ using ZazaInc.Models;
 
 namespace ZazaInc.Controllers
 {
-    public class EmpleadoesController : Controller
+    public class VacacionesController : Controller
     {
         private DBZazaIncEntities1 db = new DBZazaIncEntities1();
 
-        // GET: Empleadoes
+        // GET: Vacaciones
         public ActionResult Index()
         {
-            return View(db.Empleadoes.ToList());
+            var vacaciones = db.Vacaciones.Include(v => v.Empleado).Include(v => v.Usuario);
+            return View(vacaciones.ToList());
         }
 
-        // GET: Empleadoes/Details/5
+        // GET: Vacaciones/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empleado empleado = db.Empleadoes.Find(id);
-            if (empleado == null)
+            Vacacione vacacione = db.Vacaciones.Find(id);
+            if (vacacione == null)
             {
                 return HttpNotFound();
             }
-            return View(empleado);
+            return View(vacacione);
         }
 
-        // GET: Empleadoes/Create
+        // GET: Vacaciones/Create
         public ActionResult Create()
         {
+            ViewBag.id_empleado = new SelectList(db.Empleadoes, "id_empleado", "nombre_empleado");
+            ViewBag.id_usuario = new SelectList(db.Usuarios, "id_usuario", "nombre_usuario");
             return View();
         }
 
-        // POST: Empleadoes/Create
+        // POST: Vacaciones/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_empleado,nombre_empleado,apellido_empleado,posicion_empleado,cedula_empleado,correo_usuario,pago_empleado,horario_empleado")] Empleado empleado)
+        public ActionResult Create([Bind(Include = "id_vacaciones,fecha_inicio,fecha_final,id_usuario,id_empleado")] Vacacione vacacione)
         {
             if (ModelState.IsValid)
             {
-                db.Empleadoes.Add(empleado);
+                db.Vacaciones.Add(vacacione);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(empleado);
+            ViewBag.id_empleado = new SelectList(db.Empleadoes, "id_empleado", "nombre_empleado", vacacione.id_empleado);
+            ViewBag.id_usuario = new SelectList(db.Usuarios, "id_usuario", "nombre_usuario", vacacione.id_usuario);
+            return View(vacacione);
         }
 
-        // GET: Empleadoes/Edit/5
+        // GET: Vacaciones/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empleado empleado = db.Empleadoes.Find(id);
-            if (empleado == null)
+            Vacacione vacacione = db.Vacaciones.Find(id);
+            if (vacacione == null)
             {
                 return HttpNotFound();
             }
-            return View(empleado);
+            ViewBag.id_empleado = new SelectList(db.Empleadoes, "id_empleado", "nombre_empleado", vacacione.id_empleado);
+            ViewBag.id_usuario = new SelectList(db.Usuarios, "id_usuario", "nombre_usuario", vacacione.id_usuario);
+            return View(vacacione);
         }
 
-        // POST: Empleadoes/Edit/5
+        // POST: Vacaciones/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_empleado,nombre_empleado,apellido_empleado,posicion_empleado,cedula_empleado,correo_usuario,pago_empleado,horario_empleado")] Empleado empleado)
+        public ActionResult Edit([Bind(Include = "id_vacaciones,fecha_inicio,fecha_final,id_usuario,id_empleado")] Vacacione vacacione)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(empleado).State = EntityState.Modified;
+                db.Entry(vacacione).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(empleado);
+            ViewBag.id_empleado = new SelectList(db.Empleadoes, "id_empleado", "nombre_empleado", vacacione.id_empleado);
+            ViewBag.id_usuario = new SelectList(db.Usuarios, "id_usuario", "nombre_usuario", vacacione.id_usuario);
+            return View(vacacione);
         }
 
-        // GET: Empleadoes/Delete/5
+        // GET: Vacaciones/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empleado empleado = db.Empleadoes.Find(id);
-            if (empleado == null)
+            Vacacione vacacione = db.Vacaciones.Find(id);
+            if (vacacione == null)
             {
                 return HttpNotFound();
             }
-            return View(empleado);
+            return View(vacacione);
         }
 
-        // POST: Empleadoes/Delete/5
+        // POST: Vacaciones/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Empleado empleado = db.Empleadoes.Find(id);
-            db.Empleadoes.Remove(empleado);
+            Vacacione vacacione = db.Vacaciones.Find(id);
+            db.Vacaciones.Remove(vacacione);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

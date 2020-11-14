@@ -13,10 +13,10 @@ namespace ZazaInc.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DBZazaIncEntities : DbContext
+    public partial class DBZazaIncEntities1 : DbContext
     {
-        public DBZazaIncEntities()
-            : base("name=DBZazaIncEntities")
+        public DBZazaIncEntities1()
+            : base("name=DBZazaIncEntities1")
         {
         }
     

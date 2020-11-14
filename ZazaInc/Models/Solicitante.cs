@@ -20,8 +20,8 @@ namespace ZazaInc.Models
             this.Entrevistas = new HashSet<Entrevista>();
         }
     
-        public int id_solicitante { get; set; }
-        public string nombre_solicitante { get; set; }
+        public int id_Solicitante { get; set; }
+        public string nombre_Solicitante { get; set; }
         public string apellido_Solicitante { get; set; }
         public int cedula_Solicitante { get; set; }
         public string correo_Solicitante { get; set; }

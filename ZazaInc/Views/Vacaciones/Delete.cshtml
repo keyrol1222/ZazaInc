@@ -1,4 +1,4 @@
-﻿@model ZazaInc.Models.Entrevista
+﻿@model ZazaInc.Models.Vacacione
 
 @{
     ViewBag.Title = "Delete";
@@ -8,23 +8,31 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Entrevista</h4>
+    <h4>Vacacione</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.notas)
+            @Html.DisplayNameFor(model => model.fecha_inicio)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.notas)
+            @Html.DisplayFor(model => model.fecha_inicio)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Solicitante.nombre_Solicitante)
+            @Html.DisplayNameFor(model => model.fecha_final)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Solicitante.nombre_Solicitante)
+            @Html.DisplayFor(model => model.fecha_final)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empleado.nombre_empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empleado.nombre_empleado)
         </dd>
 
         <dt>

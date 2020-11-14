@@ -1,0 +1,50 @@
+﻿@model ZazaInc.Models.Solicitante
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Solicitante</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre_Solicitante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_Solicitante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellido_Solicitante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellido_Solicitante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cedula_Solicitante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cedula_Solicitante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correo_Solicitante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correo_Solicitante)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_Solicitante }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
