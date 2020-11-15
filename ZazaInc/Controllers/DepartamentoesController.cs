@@ -10,107 +10,107 @@ using ZazaInc.Models;
 
 namespace ZazaInc.Controllers
 {
-    public class EmpleadoesController : Controller
+    public class DepartamentoesController : Controller
     {
         private DBZazaIncEntities1 db = new DBZazaIncEntities1();
 
-        // GET: Empleadoes
+        // GET: Departamentoes
         public ActionResult Index()
         {
-            return View(db.Empleadoes.ToList());
+            return View(db.Departamentoes.ToList());
         }
 
-        // GET: Empleadoes/Details/5
+        // GET: Departamentoes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empleado empleado = db.Empleadoes.Find(id);
-            if (empleado == null)
+            Departamento departamento = db.Departamentoes.Find(id);
+            if (departamento == null)
             {
                 return HttpNotFound();
             }
-            return View(empleado);
+            return View(departamento);
         }
 
-        // GET: Empleadoes/Create
+        // GET: Departamentoes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Empleadoes/Create
+        // POST: Departamentoes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_empleado,nombre_empleado,apellido_empleado,posicion_empleado,cedula_empleado,correo_usuario,pago_empleado,horario_empleado,departamento")] Empleado empleado)
+        public ActionResult Create([Bind(Include = "id_Departamento,Nombre")] Departamento departamento)
         {
             if (ModelState.IsValid)
             {
-                db.Empleadoes.Add(empleado);
+                db.Departamentoes.Add(departamento);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(empleado);
+            return View(departamento);
         }
 
-        // GET: Empleadoes/Edit/5
+        // GET: Departamentoes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empleado empleado = db.Empleadoes.Find(id);
-            if (empleado == null)
+            Departamento departamento = db.Departamentoes.Find(id);
+            if (departamento == null)
             {
                 return HttpNotFound();
             }
-            return View(empleado);
+            return View(departamento);
         }
 
-        // POST: Empleadoes/Edit/5
+        // POST: Departamentoes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_empleado,nombre_empleado,apellido_empleado,posicion_empleado,cedula_empleado,correo_usuario,pago_empleado,horario_empleado,departamento")] Empleado empleado)
+        public ActionResult Edit([Bind(Include = "id_Departamento,Nombre")] Departamento departamento)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(empleado).State = EntityState.Modified;
+                db.Entry(departamento).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(empleado);
+            return View(departamento);
         }
 
-        // GET: Empleadoes/Delete/5
+        // GET: Departamentoes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empleado empleado = db.Empleadoes.Find(id);
-            if (empleado == null)
+            Departamento departamento = db.Departamentoes.Find(id);
+            if (departamento == null)
             {
                 return HttpNotFound();
             }
-            return View(empleado);
+            return View(departamento);
         }
 
-        // POST: Empleadoes/Delete/5
+        // POST: Departamentoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Empleado empleado = db.Empleadoes.Find(id);
-            db.Empleadoes.Remove(empleado);
+            Departamento departamento = db.Departamentoes.Find(id);
+            db.Departamentoes.Remove(departamento);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

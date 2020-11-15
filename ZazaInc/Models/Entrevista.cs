@@ -18,8 +18,11 @@ namespace ZazaInc.Models
         public int Id_usuario { get; set; }
         public int Id_solicitante { get; set; }
         public string notas { get; set; }
+        public Nullable<int> departamento_deseado { get; set; }
+        public string estado { get; set; }
     
         public virtual Solicitante Solicitante { get; set; }
         public virtual Usuario Usuario { get; set; }
+        public virtual Departamento Departamento { get; set; }
     }
 }

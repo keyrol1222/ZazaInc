@@ -31,5 +31,6 @@ namespace ZazaInc.Models
         public virtual DbSet<Terminar> Terminars { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<Vacacione> Vacaciones { get; set; }
+        public virtual DbSet<Departamento> Departamentoes { get; set; }
     }
 }

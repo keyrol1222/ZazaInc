@@ -12,29 +12,21 @@ namespace ZazaInc.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Empleado
+    public partial class Departamento
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Empleado()
+        public Departamento()
         {
-            this.Terminars = new HashSet<Terminar>();
-            this.Vacaciones = new HashSet<Vacacione>();
+            this.Empleadoes = new HashSet<Empleado>();
+            this.Entrevistas = new HashSet<Entrevista>();
         }
     
-        public int id_empleado { get; set; }
-        public string nombre_empleado { get; set; }
-        public string apellido_empleado { get; set; }
-        public string posicion_empleado { get; set; }
-        public int cedula_empleado { get; set; }
-        public string correo_usuario { get; set; }
-        public int pago_empleado { get; set; }
-        public string horario_empleado { get; set; }
-        public Nullable<int> departamento { get; set; }
+        public int id_Departamento { get; set; }
+        public string Nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Terminar> Terminars { get; set; }
+        public virtual ICollection<Empleado> Empleadoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vacacione> Vacaciones { get; set; }
-        public virtual Departamento Departamento1 { get; set; }
+        public virtual ICollection<Entrevista> Entrevistas { get; set; }
     }
 }

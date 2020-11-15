@@ -4,7 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBZazaIncModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBZazaIncModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="id_Departamento" />
+          </Key>
+          <Property Name="id_Departamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="Empleado">
           <Key>
             <PropertyRef Name="id_empleado" />
@@ -17,6 +24,7 @@
           <Property Name="correo_usuario" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="pago_empleado" Type="int" Nullable="false" />
           <Property Name="horario_empleado" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="departamento" Type="int" />
         </EntityType>
         <EntityType Name="Entrevista">
           <Key>
@@ -25,7 +33,9 @@
           <Property Name="id_Entrevista" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_usuario" Type="int" Nullable="false" />
           <Property Name="Id_solicitante" Type="int" Nullable="false" />
-          <Property Name="notas" Type="varchar" MaxLength="1" />
+          <Property Name="notas" Type="varchar(max)" />
+          <Property Name="departamento_deseado" Type="int" />
+          <Property Name="estado" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Solicitante">
           <Key>
@@ -44,7 +54,7 @@
           <Property Name="ID_Terminar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_usuario" Type="int" Nullable="false" />
           <Property Name="id_empleado" Type="int" Nullable="false" />
-          <Property Name="razon" Type="varchar" MaxLength="1" />
+          <Property Name="razon" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -69,6 +79,30 @@
           <Property Name="id_usuario" Type="int" Nullable="false" />
           <Property Name="id_empleado" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK__Empleado__depart__33D4B598">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="id_Departamento" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Entrevist__depar__38996AB5">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+          <End Role="Entrevista" Type="Self.Entrevista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="id_Departamento" />
+            </Principal>
+            <Dependent Role="Entrevista">
+              <PropertyRef Name="departamento_deseado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Entrevist__Id_so__30F848ED">
           <End Role="Solicitante" Type="Self.Solicitante" Multiplicity="1" />
           <End Role="Entrevista" Type="Self.Entrevista" Multiplicity="*" />
@@ -142,12 +176,21 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DBZazaIncModelStoreContainer">
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Entrevista" EntityType="Self.Entrevista" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Solicitante" EntityType="Self.Solicitante" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Terminar" EntityType="Self.Terminar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vacacione" EntityType="Self.Vacacione" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Empleado__depart__33D4B598" Association="Self.FK__Empleado__depart__33D4B598">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Entrevist__depar__38996AB5" Association="Self.FK__Entrevist__depar__38996AB5">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Entrevista" EntitySet="Entrevista" />
+          </AssociationSet>
           <AssociationSet Name="FK__Entrevist__Id_so__30F848ED" Association="Self.FK__Entrevist__Id_so__30F848ED">
             <End Role="Solicitante" EntitySet="Solicitante" />
             <End Role="Entrevista" EntitySet="Entrevista" />
@@ -173,8 +216,7 @@
             <End Role="Vacacione" EntitySet="Vacacione" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBZazaIncModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -192,6 +234,8 @@
           <Property Name="horario_empleado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Terminars" Relationship="Self.FK__Terminar__id_emp__2D27B809" FromRole="Empleado" ToRole="Terminar" />
           <NavigationProperty Name="Vacaciones" Relationship="Self.FK__Vacacione__id_em__29572725" FromRole="Empleado" ToRole="Vacacione" />
+          <Property Name="departamento" Type="Int32" />
+          <NavigationProperty Name="Departamento1" Relationship="DBZazaIncModel.FK__Empleado__depart__33D4B598" FromRole="Empleado" ToRole="Departamento" />
         </EntityType>
         <EntityType Name="Entrevista">
           <Key>
@@ -200,9 +244,12 @@
           <Property Name="id_Entrevista" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Id_usuario" Type="Int32" Nullable="false" />
           <Property Name="Id_solicitante" Type="Int32" Nullable="false" />
-          <Property Name="notas" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="notas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Solicitante" Relationship="Self.FK__Entrevist__Id_so__30F848ED" FromRole="Entrevista" ToRole="Solicitante" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK__Entrevist__Id_us__300424B4" FromRole="Entrevista" ToRole="Usuario" />
+          <Property Name="departamento_deseado" Type="Int32" />
+          <Property Name="estado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Departamento" Relationship="DBZazaIncModel.FK__Entrevist__depar__38996AB5" FromRole="Entrevista" ToRole="Departamento" />
         </EntityType>
         <EntityType Name="Solicitante">
           <Key>
@@ -222,7 +269,7 @@
           <Property Name="ID_Terminar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_usuario" Type="Int32" Nullable="false" />
           <Property Name="id_empleado" Type="Int32" Nullable="false" />
-          <Property Name="razon" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="razon" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Empleado" Relationship="Self.FK__Terminar__id_emp__2D27B809" FromRole="Terminar" ToRole="Empleado" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK__Terminar__id_usu__2C3393D0" FromRole="Terminar" ToRole="Usuario" />
         </EntityType>
@@ -357,7 +404,49 @@
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="Vacacione" EntitySet="Vacaciones" />
           </AssociationSet>
+          <EntitySet Name="Departamentoes" EntityType="DBZazaIncModel.Departamento" />
+          <AssociationSet Name="FK__Empleado__depart__33D4B598" Association="DBZazaIncModel.FK__Empleado__depart__33D4B598">
+            <End Role="Departamento" EntitySet="Departamentoes" />
+            <End Role="Empleado" EntitySet="Empleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Entrevist__depar__38996AB5" Association="DBZazaIncModel.FK__Entrevist__depar__38996AB5">
+            <End Role="Departamento" EntitySet="Departamentoes" />
+            <End Role="Entrevista" EntitySet="Entrevistas" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="id_Departamento" />
+          </Key>
+          <Property Name="id_Departamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empleadoes" Relationship="DBZazaIncModel.FK__Empleado__depart__33D4B598" FromRole="Departamento" ToRole="Empleado" />
+          <NavigationProperty Name="Entrevistas" Relationship="DBZazaIncModel.FK__Entrevist__depar__38996AB5" FromRole="Departamento" ToRole="Entrevista" />
+        </EntityType>
+        <Association Name="FK__Empleado__depart__33D4B598">
+          <End Type="DBZazaIncModel.Departamento" Role="Departamento" Multiplicity="0..1" />
+          <End Type="DBZazaIncModel.Empleado" Role="Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="id_Departamento" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Entrevist__depar__38996AB5">
+          <End Type="DBZazaIncModel.Departamento" Role="Departamento" Multiplicity="0..1" />
+          <End Type="DBZazaIncModel.Entrevista" Role="Entrevista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="id_Departamento" />
+            </Principal>
+            <Dependent Role="Entrevista">
+              <PropertyRef Name="departamento_deseado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -367,6 +456,7 @@
           <EntitySetMapping Name="Empleadoes">
             <EntityTypeMapping TypeName="DBZazaIncModel.Empleado">
               <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
                 <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
                 <ScalarProperty Name="nombre_empleado" ColumnName="nombre_empleado" />
                 <ScalarProperty Name="apellido_empleado" ColumnName="apellido_empleado" />
@@ -381,6 +471,8 @@
           <EntitySetMapping Name="Entrevistas">
             <EntityTypeMapping TypeName="DBZazaIncModel.Entrevista">
               <MappingFragment StoreEntitySet="Entrevista">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="departamento_deseado" ColumnName="departamento_deseado" />
                 <ScalarProperty Name="id_Entrevista" ColumnName="id_Entrevista" />
                 <ScalarProperty Name="Id_usuario" ColumnName="Id_usuario" />
                 <ScalarProperty Name="Id_solicitante" ColumnName="Id_solicitante" />
@@ -431,6 +523,14 @@
                 <ScalarProperty Name="fecha_final" ColumnName="fecha_final" />
                 <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
                 <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamentoes">
+            <EntityTypeMapping TypeName="DBZazaIncModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="id_Departamento" ColumnName="id_Departamento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

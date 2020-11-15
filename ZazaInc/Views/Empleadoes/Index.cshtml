@@ -5,9 +5,10 @@
 }
 
 <h2>Index</h2>
-
+<li>@Html.ActionLink("Actualizar informacion", "Index", "Empleadoes")</li>
+<li>@Html.ActionLink("Gestionar Vacaciones", "Index", "Vacaciones")</li>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear registro", "Create")
 </p>
 <table class="table">
     <tr>
@@ -32,38 +33,44 @@
         <th>
             @Html.DisplayNameFor(model => model.horario_empleado)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.departamento)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre_empleado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.apellido_empleado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.posicion_empleado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cedula_empleado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.correo_usuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.pago_empleado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.horario_empleado)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_empleado }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_empleado }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_empleado })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.nombre_empleado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.apellido_empleado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.posicion_empleado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.cedula_empleado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.correo_usuario)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.pago_empleado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.horario_empleado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.departamento)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.id_empleado }) |
+        @Html.ActionLink("Details", "Details", new { id = item.id_empleado }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.id_empleado })
+    </td>
+</tr>
 }
 
 </table>

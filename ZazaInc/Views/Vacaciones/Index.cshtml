@@ -5,9 +5,10 @@
 }
 
 <h2>Index</h2>
-
+<li>@Html.ActionLink("Actualizar informacion", "Index", "Empleadoes")</li>
+<li>@Html.ActionLink("Gestionar Vacaciones", "Index", "Vacaciones")</li>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar vacaciones", "Create")
 </p>
 <table class="table">
     <tr>
@@ -26,26 +27,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha_inicio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha_final)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Empleado.nombre_empleado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Usuario.nombre_usuario)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_vacaciones }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_vacaciones }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_vacaciones })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_inicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_final)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empleado.nombre_empleado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario.nombre_usuario)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id_vacaciones }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id_vacaciones }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id_vacaciones })
+            </td>
+        </tr>
+    }
 
 </table>
