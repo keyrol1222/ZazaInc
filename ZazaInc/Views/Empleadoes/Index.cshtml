@@ -4,37 +4,35 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Registro De Empleados</h2>
 <li>@Html.ActionLink("Actualizar informacion", "Index", "Empleadoes")</li>
 <li>@Html.ActionLink("Gestionar Vacaciones", "Index", "Vacaciones")</li>
-<p>
-    @Html.ActionLink("Crear registro", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.nombre_empleado)
+            Nombre
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.apellido_empleado)
+           Apellido
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.posicion_empleado)
+           Puesto
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.cedula_empleado)
+            Cedula
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.correo_usuario)
+           Correo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.pago_empleado)
+            Sueldo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.horario_empleado)
+          horario
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.departamento)
+           id del departamento
         </th>
         <th></th>
     </tr>
@@ -74,3 +72,9 @@
 }
 
 </table>
+
+<p>
+    @Html.ActionLink("Añadir registro", "Create")
+</p>
+
+ 
