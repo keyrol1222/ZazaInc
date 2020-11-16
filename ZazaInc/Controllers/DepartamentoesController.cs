@@ -12,7 +12,7 @@ namespace ZazaInc.Controllers
 {
     public class DepartamentoesController : Controller
     {
-        private DBZazaIncEntities1 db = new DBZazaIncEntities1();
+        private DBZazaIncEntities2 db = new DBZazaIncEntities2();
 
         // GET: Departamentoes
         public ActionResult Index()

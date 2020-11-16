@@ -4,22 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="18031aa456de4bf2919ade104bb2932b" Name="Diagram1">
-        <EntityTypeShape EntityType="DBZazaIncModel.Empleado" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBZazaIncModel.Entrevista" Width="1.5" PointX="5" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBZazaIncModel.Solicitante" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBZazaIncModel.Terminar" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBZazaIncModel.Usuario" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBZazaIncModel.Vacacione" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+      <Diagram DiagramId="1204ac761e6f4d6e97e885b60ec14666" Name="Diagram1">
+        <EntityTypeShape EntityType="DBZazaIncModel.Departamento" Width="1.5" PointX="1.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBZazaIncModel.Empleado" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBZazaIncModel.Entrevista" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBZazaIncModel.Solicitante" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBZazaIncModel.Terminar" Width="1.5" PointX="6" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBZazaIncModel.Usuario" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBZazaIncModel.Vacacione" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="DBZazaIncModel.FK__Empleado__depart__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="DBZazaIncModel.FK__Entrevist__depar__38996AB5" ManuallyRouted="false" />
         <AssociationConnector Association="DBZazaIncModel.FK__Terminar__id_emp__2D27B809" ManuallyRouted="false" />
         <AssociationConnector Association="DBZazaIncModel.FK__Vacacione__id_em__29572725" ManuallyRouted="false" />
         <AssociationConnector Association="DBZazaIncModel.FK__Entrevist__Id_so__30F848ED" ManuallyRouted="false" />
         <AssociationConnector Association="DBZazaIncModel.FK__Entrevist__Id_us__300424B4" ManuallyRouted="false" />
         <AssociationConnector Association="DBZazaIncModel.FK__Terminar__id_usu__2C3393D0" ManuallyRouted="false" />
         <AssociationConnector Association="DBZazaIncModel.FK__Vacacione__id_us__286302EC" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DBZazaIncModel.Departamento" Width="1.5" PointX="5.125" PointY="1.75" />
-        <AssociationConnector Association="DBZazaIncModel.FK__Empleado__depart__33D4B598" />
-        <AssociationConnector Association="DBZazaIncModel.FK__Entrevist__depar__38996AB5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

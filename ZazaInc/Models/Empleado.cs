@@ -30,11 +30,12 @@ namespace ZazaInc.Models
         public int pago_empleado { get; set; }
         public string horario_empleado { get; set; }
         public Nullable<int> departamento { get; set; }
+        public string estado { get; set; }
     
+        public virtual Departamento Departamento1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Terminar> Terminars { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vacacione> Vacaciones { get; set; }
-        public virtual Departamento Departamento1 { get; set; }
     }
 }

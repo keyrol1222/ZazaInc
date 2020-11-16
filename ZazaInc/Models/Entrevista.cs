@@ -21,8 +21,8 @@ namespace ZazaInc.Models
         public Nullable<int> departamento_deseado { get; set; }
         public string estado { get; set; }
     
+        public virtual Departamento Departamento { get; set; }
         public virtual Solicitante Solicitante { get; set; }
         public virtual Usuario Usuario { get; set; }
-        public virtual Departamento Departamento { get; set; }
     }
 }

@@ -27,6 +27,7 @@
 
     @foreach (var item in Model)
     {
+        
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.fecha_inicio)
@@ -43,11 +44,11 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.id_vacaciones }) |
                 @Html.ActionLink("Details", "Details", new { id = item.id_vacaciones }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id_vacaciones })
+                <!--@Html.ActionLink("Delete", "Delete", new { id = item.id_vacaciones })-->
             </td>
         </tr>
-    }
-
+        }
+    
 </table>
 <p>
     @Html.ActionLink("Registrar vacaciones", "Create")

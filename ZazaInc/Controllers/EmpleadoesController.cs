@@ -12,7 +12,7 @@ namespace ZazaInc.Controllers
 {
     public class EmpleadoesController : Controller
     {
-        private DBZazaIncEntities1 db = new DBZazaIncEntities1();
+        private DBZazaIncEntities2 db = new DBZazaIncEntities2();
 
         // GET: Empleadoes
         public ActionResult Index()
@@ -50,6 +50,7 @@ namespace ZazaInc.Controllers
         {
             if (ModelState.IsValid)
             {
+                 
                 db.Empleadoes.Add(empleado);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -13,10 +13,10 @@ namespace ZazaInc.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DBZazaIncEntities1 : DbContext
+    public partial class DBZazaIncEntities2 : DbContext
     {
-        public DBZazaIncEntities1()
-            : base("name=DBZazaIncEntities1")
+        public DBZazaIncEntities2()
+            : base("name=DBZazaIncEntities2")
         {
         }
     
@@ -25,12 +25,12 @@ namespace ZazaInc.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Departamento> Departamentoes { get; set; }
         public virtual DbSet<Empleado> Empleadoes { get; set; }
         public virtual DbSet<Entrevista> Entrevistas { get; set; }
         public virtual DbSet<Solicitante> Solicitantes { get; set; }
         public virtual DbSet<Terminar> Terminars { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<Vacacione> Vacaciones { get; set; }
-        public virtual DbSet<Departamento> Departamentoes { get; set; }
     }
 }

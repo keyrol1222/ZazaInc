@@ -12,7 +12,7 @@ namespace ZazaInc.Controllers
 {
     public class UsuariosController : Controller
     {
-        private DBZazaIncEntities1 db = new DBZazaIncEntities1();
+        private DBZazaIncEntities2 db = new DBZazaIncEntities2();
 
         // GET: Usuarios
         public ActionResult Index()

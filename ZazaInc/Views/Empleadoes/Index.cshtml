@@ -14,67 +14,160 @@
             Nombre
         </th>
         <th>
-           Apellido
+            Apellido
         </th>
         <th>
-           Puesto
+            Puesto
         </th>
         <th>
             Cedula
         </th>
         <th>
-           Correo
+            Correo
         </th>
         <th>
             Sueldo
         </th>
         <th>
-          horario
+            horario
         </th>
         <th>
-           id del departamento
+            id del departamento
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.nombre_empleado)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.apellido_empleado)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.posicion_empleado)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.cedula_empleado)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.correo_usuario)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.pago_empleado)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.horario_empleado)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.departamento)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.id_empleado }) |
-        @Html.ActionLink("Details", "Details", new { id = item.id_empleado }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.id_empleado })
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        if (item.estado != "inactivo")
+        {
+            <tr>
 
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.apellido_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.posicion_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cedula_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.correo_usuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pago_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.horario_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.departamento)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id_empleado }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id_empleado }) |
+                    <!--@Html.ActionLink("Delete", "Delete", new { id = item.id_empleado })-->
+                </td>
+            </tr>
+        }
+    }
 </table>
+
 
 <p>
     @Html.ActionLink("Añadir registro", "Create")
 </p>
 
- 
+<br />
+
+<button onclick="myFunction()">Mostrar inactivos</button>
+
+
+<table class="table" id="myDIV">
+    <tr>
+        <th> Inactivos</th>
+</tr>
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Apellido
+        </th>
+        <th>
+            Puesto
+        </th>
+        <th>
+            Cedula
+        </th>
+        <th>
+            Correo
+        </th>
+        <th>
+            Sueldo
+        </th>
+        <th>
+            horario
+        </th>
+        <th>
+            id del departamento
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.estado == "inactivo")
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.apellido_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.posicion_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cedula_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.correo_usuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pago_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.horario_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.departamento)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id_empleado }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id_empleado }) |
+                    <!--@Html.ActionLink("Delete", "Delete", new { id = item.id_empleado })-->
+                </td>
+            </tr>
+        }
+    }
+</table> 
+<script>
+    var x = document.getElementById("myDIV");
+    x.style.display = "none";
+
+    function myFunction() {
+
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
