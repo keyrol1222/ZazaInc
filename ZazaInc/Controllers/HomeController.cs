@@ -37,9 +37,9 @@ namespace ZazaInc.Controllers
                     FormsAuthentication.SetAuthCookie(user.correo_usuario, true);
 
 
-                    var myCookie = new HttpCookie("myCookie");//instantiate an new cookie and give it a name
-                    myCookie.Values.Add("Rol",  user.rol_usuario);//populate it with key, value pairs
-                    Response.Cookies.Add(myCookie);//add it to the client
+                    var myCookie = new HttpCookie("myCookie");  
+                    myCookie.Values.Add("Rol",  user.rol_usuario); 
+                    Response.Cookies.Add(myCookie); 
 
 
 

@@ -3,7 +3,14 @@
 @{
     ViewBag.Title = "Index";
 }
+@{var cookie = Request.Cookies["myCookie"];
+    var rol = "";
+    if (cookie != null)
+    {
+        rol = cookie.Values["Rol"].ToString();
+    }
 
+}
 <h2>Registro De Empleados</h2>
 <li>@Html.ActionLink("Actualizar informacion", "Index", "Empleadoes")</li>
 <li>@Html.ActionLink("Gestionar Vacaciones", "Index", "Vacaciones")</li>
@@ -13,7 +20,7 @@
         <th>
             Nombre
         </th>
-       
+
         <th>
             Puesto
         </th>
@@ -32,43 +39,46 @@
         <th>
             id del departamento
         </th>
-        <th></th>
-    </tr>
+        @if (rol == "admin")
+        {
+            <th></th>}
+        </tr>
 
     @foreach (var item in Model)
     {
         if (item.estado != "inactivo")
         {
-            <tr>
+<tr>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.nombre_empleado)  @Html.DisplayFor(modelItem => item.apellido_empleado)
-                </td>
-                 
-                <td>
-                    @Html.DisplayFor(modelItem => item.posicion_empleado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.cedula_empleado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.correo_usuario)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.pago_empleado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.horario_empleado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.departamento)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id_empleado }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.id_empleado }) |
-                    <!--@Html.ActionLink("Delete", "Delete", new { id = item.id_empleado })-->
-                </td>
-            </tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.nombre_empleado)  @Html.DisplayFor(modelItem => item.apellido_empleado)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.posicion_empleado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.cedula_empleado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.correo_usuario)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.pago_empleado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.horario_empleado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.departamento)
+    </td>
+    @if(rol == "admin") {
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.id_empleado }) |
+        @Html.ActionLink("Details", "Details", new { id = item.id_empleado }) |
+        <!--@Html.ActionLink("Delete", "Delete", new { id = item.id_empleado })-->
+    </td>}
+</tr>
         }
     }
 </table>
@@ -86,12 +96,12 @@
 <table class="table" id="myDIV">
     <tr>
         <th> Inactivos</th>
-</tr>
+    </tr>
     <tr>
         <th>
             Nombre
         </th>
-         
+
         <th>
             Puesto
         </th>
@@ -110,46 +120,50 @@
         <th>
             id del departamento
         </th>
-        <th></th>
-    </tr>
+        @if (rol == "admin")
+        {
+            <th></th>}
+        </tr>
 
     @foreach (var item in Model)
     {
         if (item.estado == "inactivo")
         {
-            <tr>
+<tr>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.nombre_empleado) @Html.DisplayFor(modelItem => item.apellido_empleado)
-                </td>
-               
-                <td>
-                    @Html.DisplayFor(modelItem => item.posicion_empleado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.cedula_empleado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.correo_usuario)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.pago_empleado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.horario_empleado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.departamento)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id_empleado }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.id_empleado }) |
-                    <!--@Html.ActionLink("Delete", "Delete", new { id = item.id_empleado })-->
-                </td>
-            </tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.nombre_empleado) @Html.DisplayFor(modelItem => item.apellido_empleado)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.posicion_empleado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.cedula_empleado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.correo_usuario)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.pago_empleado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.horario_empleado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.departamento)
+    </td>
+    @if (rol == "admin")
+    {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.id_empleado }) |
+            @Html.ActionLink("Details", "Details", new { id = item.id_empleado }) |
+            <!--@Html.ActionLink("Delete", "Delete", new { id = item.id_empleado })-->
+        </td>}
+    </tr>
         }
     }
-</table> 
+</table>
 <script>
     var x = document.getElementById("myDIV");
     x.style.display = "none";
