@@ -13,9 +13,7 @@
         <th>
             Nombre
         </th>
-        <th>
-            Apellido
-        </th>
+       
         <th>
             Puesto
         </th>
@@ -44,11 +42,9 @@
             <tr>
 
                 <td>
-                    @Html.DisplayFor(modelItem => item.nombre_empleado)
+                    @Html.DisplayFor(modelItem => item.nombre_empleado)  @Html.DisplayFor(modelItem => item.apellido_empleado)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.apellido_empleado)
-                </td>
+                 
                 <td>
                     @Html.DisplayFor(modelItem => item.posicion_empleado)
                 </td>
@@ -95,9 +91,7 @@
         <th>
             Nombre
         </th>
-        <th>
-            Apellido
-        </th>
+         
         <th>
             Puesto
         </th>
@@ -126,11 +120,9 @@
             <tr>
 
                 <td>
-                    @Html.DisplayFor(modelItem => item.nombre_empleado)
+                    @Html.DisplayFor(modelItem => item.nombre_empleado) @Html.DisplayFor(modelItem => item.apellido_empleado)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.apellido_empleado)
-                </td>
+               
                 <td>
                     @Html.DisplayFor(modelItem => item.posicion_empleado)
                 </td>

@@ -8,6 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -18,16 +19,27 @@
                 </button>
                 @Html.ActionLink("Zaza Managment", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
+            @{var cookie = Request.Cookies["myCookie"];
+                var rol = "";
+                if (cookie != null) {
+                    rol = cookie.Values["Rol"].ToString();
+                }
+                
+            }
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Pantalla de inicio", "Index", "Home")</li>
                     @if (User.Identity.IsAuthenticated)
                     {
+                    if(rol == "admin") { 
+
                         <li>@Html.ActionLink("Operacion", "Index", "Empleadoes")</li>
                         <li>@Html.ActionLink("Terminacion", "Index", "Terminars")</li>
-                        <li>@Html.ActionLink("Contratacion", "Index", "Entrevistas")</li>
-                        <li class="tab"><a href="/Home/Logout">Salir</a></li>}
-                    </ul>
+                        <li>@Html.ActionLink("Contratacion", "Index", "Entrevistas")</li>}
+
+                        <li class="tab"><a href="/Home/Logout">Salir</a></li>
+                    }
+                </ul>
             </div>
         </div>
     </div>
@@ -35,7 +47,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - ZazaManagment</p>
         </footer>
     </div>
 

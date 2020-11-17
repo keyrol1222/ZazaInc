@@ -35,13 +35,16 @@ namespace ZazaInc.Controllers
                 if (user != null)
                 {
                     FormsAuthentication.SetAuthCookie(user.correo_usuario, true);
-                    
-
-                    
-                    
 
 
-                        return RedirectToAction("Index", "Home");
+                    var myCookie = new HttpCookie("myCookie");//instantiate an new cookie and give it a name
+                    myCookie.Values.Add("Rol",  user.rol_usuario);//populate it with key, value pairs
+                    Response.Cookies.Add(myCookie);//add it to the client
+
+
+
+
+                    return RedirectToAction("Index", "Home");
                     
 
 
