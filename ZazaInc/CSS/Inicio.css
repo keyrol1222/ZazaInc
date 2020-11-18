@@ -1,0 +1,14 @@
+﻿
+
+body {
+    background-image: url(Recursos/Home.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 150px;
+}
+
+#usuario {
+    font-size: 50px;
+    color: #F56347;
+    text-align: center;
+}
