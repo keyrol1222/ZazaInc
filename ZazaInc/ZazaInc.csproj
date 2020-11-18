@@ -253,7 +253,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="CSS\Inicio.css" />
     <Content Include="CSS\Layout.css" />
-    <Content Include="CSS\Recursos\Home.svg" />
     <Content Include="CSS\Recursos\Homee.svg" />
     <Content Include="CSS\Recursos\User.png" />
     <Content Include="favicon.ico" />

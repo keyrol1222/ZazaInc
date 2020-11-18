@@ -13,7 +13,7 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" id="despliegue">
         <nav class="navbar navbar-light bg-light" id="navtitulo">
-            <span class="navbar-brand mb-0 h1" id="titulo">ZAZA Maganement SRL</span>
+            <span class="navbar-brand mb-0 h1" id="titulo">ZAZA Management SRL</span>
             @if (User.Identity.IsAuthenticated)
             {
         <div id="logout">
@@ -30,7 +30,7 @@
                
             }
         </nav>
-        <div class="container">
+        <div class="container" >
             <div class="navbar-header">
                 <!--Apartado Responsive-->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -47,9 +47,9 @@
                 }
 
             }
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" >
                 <ul class="nav navbar-nav">
-                    <li id="navbarDropdownMenuLink" >@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    <li id="navbarDropdownMenuLink">@Html.ActionLink("Inicio", "Index", "Home")</li>
 
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -85,18 +85,20 @@
                             </li>
 
                             <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="~/Views/Terminars/Index.cshtml">Terminacion</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="items">
+                                    <a class="dropdown-item"> @Html.ActionLink("Añadir registro", "Create", "Terminars")</a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="~/Views/Entrevistas/Index.cshtml">Contratacion</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="items">
                                     <a class="dropdown-item"> @Html.ActionLink("Añadir registro", "Create", "Entrevistas")</a>
                                 </div>
                             </li>
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="~/Views/Terminars/Index.cshtml">Terminacion</a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="items">
-                                    <a class="dropdown-item"> @Html.ActionLink("Añadir registro", "Create", "Terminars")</a>
-                                </div>
-                            </li>
+                            
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="~/Views/Usuarios/Index.cshtml">Administracion</a>
@@ -121,7 +123,7 @@
     <div class="container body-content">
         @RenderBody()
         <footer>
-            <p>&copy; @DateTime.Now.Year - ZazaManagment</p>
+            <p>&copy; @DateTime.Now.Year - ZazaManagement</p>
         </footer>
     </div>
 
