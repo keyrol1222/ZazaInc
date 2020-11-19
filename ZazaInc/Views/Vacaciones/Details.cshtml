@@ -3,8 +3,8 @@
 @{
     ViewBag.Title = "Details";
 }
-    <link href="~/CSS/Recursos/Operacion.css" rel="stylesheet" />
-    <p id="p">Mostrando detalles...</p>
+<link href="~/CSS/Recursos/Operacion.css" rel="stylesheet" />
+<p id="p">Mostrando detalles...</p>
 
 <div>
     <hr />
@@ -46,4 +46,8 @@
 
 <button id="botonRegistro" class="btn btn-primary">
     @Html.ActionLink("Volver al listado", "Index", new { @class = "addy" }, new { @class = "addy" })
+</button>
+
+<button id="botonRegistro" class="btn btn-primary">
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id_vacaciones }, new { @class = "addy" })
 </button>
