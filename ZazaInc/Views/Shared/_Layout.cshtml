@@ -6,54 +6,192 @@
     <title>ZAZA Management SRL</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="~/CSS/Layout.css" rel="stylesheet" />
+    
 </head>
 
-
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" id="despliegue">
-        <nav class="navbar navbar-light bg-light" id="navtitulo">
-            <span class="navbar-brand mb-0 h1" id="titulo">ZAZA Management SRL</span>
-            @if (User.Identity.IsAuthenticated)
-            {
-        <div id="logout">
-            <div><span id="adm">Administrador</span></div>
-            
-                <div id="cerrar">
-                    <img src="~/CSS/Recursos/User.png" align="left">
-                    <a href="/Home/Logout" class="badge badge-secondary">Cerrar sesion</a>
-                </div >
-            
-            <div id="rh"><span>Recursos humanos</span></div>
-        </div>
-         
-               
-            }
-        </nav>
-        <div class="container" >
-            <div class="navbar-header">
-                <!--Apartado Responsive-->
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+
+    @if (!User.Identity.IsAuthenticated)
+    {
+
+
+
+        <link href="~/CSS/Login.css" rel="stylesheet" />
+
+        <div class="page">
+            <div class="container">
+                <div class="left">
+                    <div class="login">ZAZA</div>
+                    <div class="eula">
+                        Bienvenido querido usuario, inicia sesion para gestionar el departamento de Recursos Humanos. <br /><br />
+                        RH.
+                        <br /><br />
+                    </div>
+                </div>
+                <div class="right">
+                    <svg viewBox="0 0 320 300">
+                        <defs>
+                            <linearGradient inkscape:collect="always"
+                                            id="linearGradient"
+                                            x1="13"
+                                            y1="193.49992"
+                                            x2="307"
+                                            y2="193.49992"
+                                            gradientUnits="userSpaceOnUse">
+                                <stop style="stop-color:#4393D2;"
+                                      offset="0"
+                                      id="stop876" />
+                                <stop style="stop-color:#F56347;"
+                                      offset="1"
+                                      id="stop878" />
+                            </linearGradient>
+                        </defs>
+                        <path stroke="url(#linearGradient)" d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143" />
+                    </svg>
+                    <form action="/Home/Login" method="post" class="form">
+
+                        <div class="form-group">
+
+                            <label>Correo electronico: </label>
+                            <input type="text" name="correo_usuario" value="" id="email" />
+                        </div>
+                        <div class="form-group">
+
+                            <label>Contraseña: </label>
+                            <input type="password" name="contraseña_usuario" value="" id="password" />
+                        </div>
+
+
+                        <div class="form-group">
+                            <input class="box" type="submit" id="submit" value="Comenzar">
+                        </div>
+                    </form>
+
+                </div>
             </div>
-            @{var cookie = Request.Cookies["myCookie"];
-                var rol = "";
-                if (cookie != null)
-                {
-                    rol = cookie.Values["Rol"].ToString();
-                }
+        </div>
 
-            }
-            <div class="navbar-collapse collapse" >
-                <ul class="nav navbar-nav">
-                    <li id="navbarDropdownMenuLink">@Html.ActionLink("Inicio", "Index", "Home")</li>
 
-                    @if (User.Identity.IsAuthenticated)
+        <script>
+
+            var current = null;
+            document.querySelector('#email').addEventListener('focus', function (e) {
+                if (current) current.pause();
+                current = anime({
+                    targets: 'path',
+                    strokeDashoffset: {
+                        value: 0,
+                        duration: 700,
+                        easing: 'easeOutQuart'
+                    },
+                    strokeDasharray: {
+                        value: '240 1386',
+                        duration: 700,
+                        easing: 'easeOutQuart'
+                    }
+                });
+            });
+            document.querySelector('#password').addEventListener('focus', function (e) {
+                if (current) current.pause();
+                current = anime({
+                    targets: 'path',
+                    strokeDashoffset: {
+                        value: -336,
+                        duration: 700,
+                        easing: 'easeOutQuart'
+                    },
+                    strokeDasharray: {
+                        value: '240 1386',
+                        duration: 700,
+                        easing: 'easeOutQuart'
+                    }
+                });
+            });
+            document.querySelector('#submit').addEventListener('focus', function (e) {
+                if (current) current.pause();
+                current = anime({
+                    targets: 'path',
+                    strokeDashoffset: {
+                        value: -730,
+                        duration: 700,
+                        easing: 'easeOutQuart'
+                    },
+                    strokeDasharray: {
+                        value: '530 1386',
+                        duration: 700,
+                        easing: 'easeOutQuart'
+                    }
+                });
+            });
+
+
+        </script>
+
+
+        <div class="container body-content">
+            @RenderBody()
+            <footer>
+                <p>&copy; @DateTime.Now.Year - ZazaManagement</p>
+            </footer>
+        </div>
+
+
+
+    }
+
+    @if (User.Identity.IsAuthenticated)
+    {
+
+        <link href="~/CSS/Layout.css" rel="stylesheet" />
+
+        <div class="navbar navbar-inverse navbar-fixed-top" id="despliegue">
+            <nav class="navbar navbar-light bg-light" id="navtitulo">
+                <span class="navbar-brand mb-0 h1" id="titulo">ZAZA Management SRL</span>
+
+
+                <div id="logout">
+                    <div><span id="adm">Administrador</span></div>
+
+                    <div id="cerrar">
+                        <img src="~/CSS/Recursos/User.png" align="left">
+                        <a href="/Home/Logout" class="badge badge-secondary">Cerrar sesion</a>
+                    </div>
+
+                    <div id="rh"><span>Recursos humanos</span></div>
+                </div>
+
+
+
+
+
+
+
+            </nav>
+            <div class="container">
+                <div class="navbar-header">
+                    <!--Apartado Responsive-->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                @{var cookie = Request.Cookies["myCookie"];
+                    var rol = "";
+                    if (cookie != null)
                     {
-                        if (rol == "Empleado")
+                        rol = cookie.Values["Rol"].ToString();
+                    }
+
+                }
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+
+
+
+
+                        <li id="navbarDropdownMenuLink">@Html.ActionLink("Inicio", "Index", "Home")</li>
+                        @if (rol == "Empleado")
                         {
 
                             <li class="nav-item dropdown">
@@ -64,7 +202,7 @@
                             </li>
 
                         }
-                        if (rol == "Solicitante")
+                        @if (rol == "Solicitante")
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="~/Views/Entrevistas/Index.cshtml">Contratacion</a>
@@ -73,7 +211,7 @@
                                 </div>
                             </li>
                         }
-                        if (rol == "admin")
+                        @if (rol == "admin")
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="~/Views/Empleadoes/Index.cshtml">Operacion</a>
@@ -98,7 +236,7 @@
                                 </div>
                             </li>
 
-                            
+
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="~/Views/Usuarios/Index.cshtml">Administracion</a>
@@ -114,18 +252,21 @@
                         }
 
 
-                        
-                    }
-                </ul>
+
+
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <footer>
-            <p>&copy; @DateTime.Now.Year - ZazaManagement</p>
-        </footer>
-    </div>
+        <div class="container body-content">
+            @RenderBody()
+            <footer>
+                <p>&copy; @DateTime.Now.Year - ZazaManagement</p>
+            </footer>
+        </div>
+
+    }
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

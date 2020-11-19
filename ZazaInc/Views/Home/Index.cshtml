@@ -5,8 +5,6 @@
 }
 
 
-    <link href="~/CSS/Inicio.css" rel="stylesheet" />
-
 @{
     if (!string.IsNullOrEmpty(ViewBag.Message))
     {
@@ -14,32 +12,10 @@
     }
 }
 
-@if (!User.Identity.IsAuthenticated)
+@if(User.Identity.IsAuthenticated)
 {
-    <div class="container">
+    <link href="~/CSS/Inicio.css" rel="stylesheet" />
+    <!--Nombre del Usuario Actual-->
+    <p id="usuario">Bienvenido/a, <br> @User.Identity.Name </p>
 
-        <form action="/Home/Login" method="post">
-
-            <div class="form-group">
-
-                <label>Ingresa su correo: </label>
-                <input type="text" name="correo_usuario" value="" />
-            </div>
-            <div class="form-group">
-
-                <label>Ingrese su contraseña: </label>
-                <input type="password" name="contraseña_usuario" value="" />
-            </div>
-
-
-            <div class="form-group">
-                <button>Iniciar sesion</button>
-            </div>
-        </form>
-      
-    </div>
-
-} 
-
-<!--Nombre del Usuario Actual-->
- <p id="usuario">Bienvenido/a, <br> @User.Identity.Name </p>
+}
