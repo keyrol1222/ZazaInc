@@ -3,45 +3,49 @@
 @{
     ViewBag.Title = "Index";
 }
+    <link href="~/CSS/Terminacion.css" rel="stylesheet" />
 
-<h2>Terminacion laboral</h2>
+    <h2>Terminacion laboral...</h2>
 
-<p>
-    @Html.ActionLink("Añadir registro", "Create")
-</p>
-<table class="table">
-    <tr>
 
-        <th>
-            Nombre del empleado
-        </th>
-        <th>
-            Nombre del usuario responsable
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.razon)
-        </th>
-        <th></th>
-    </tr>
+    <table class="table">
+        <tr>
 
-@foreach (var item in Model) {
-<tr>
+            <th>
+                Nombre del empleado
+            </th>
+            <th>
+                Nombre del usuario responsable
+            </th>
+            <th>
+                Razon de Terminacion
+            </th>
+            <th></th>
+        </tr>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.Empleado.nombre_empleado)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Usuario.nombre_usuario)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.razon)
-    </td>
-    <td>
-        <!--@Html.ActionLink("Edit", "Edit", new { id = item.ID_Terminar }) |-->
-        @Html.ActionLink("Detalles", "Details", new { id = item.ID_Terminar }) |
-        <!-- @Html.ActionLink("Borrar", "Delete", new { id = item.ID_Terminar })-->
-    </td>
-</tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
 
-</table>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empleado.nombre_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario.nombre_usuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.razon)
+                </td>
+                <td id="i">
+                    <button class="uo"> <img src="~/CSS/Recursos/lapiz.png"> @Html.ActionLink("Editar", "Edit", new { id = item.ID_Terminar })</button>
+                    <button class="uo1"> <img src="~/CSS/Recursos/informacion.png"> @Html.ActionLink("Detalles", "Details", new { id = item.ID_Terminar }, new { @class = "uo2" }) </button>
+                    <button class="uo4"> <img src="~/CSS/Recursos/eliminar.png"> @Html.ActionLink("Eliminar", "Delete", new { id = item.ID_Terminar }, new { @class = "uo3" })</button>
+                </td>
+            </tr>
+        }
+        
+    </table>
+
+<button id="botonRegistro" class="btn btn-primary">
+    @Html.ActionLink("Añadir registro", "Create", new { @class = "addy" }, new { @class = "addy" })
+</button>

@@ -1,0 +1,115 @@
+﻿
+body {
+    background-color:white;
+    background-image:none;
+    
+    margin-top:200px;
+}
+
+table {
+    margin-top: 50PX;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    table td, table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    table tr:hover {
+        background-color: #ddd;
+    }
+
+    table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: rgba(40, 176, 224, 0.33);
+        color: black;
+    }
+
+h2 {
+    color: #808080;
+    text-align: right;
+    font-size: 24px;
+}
+
+text {
+    background-color: rgba(0, 185, 255, 0.30);
+    position: absolute;
+    padding: inherit;
+    padding-right: 58%;
+    font-size: 24px;
+}
+
+#p {
+    background-color: rgba(0, 185, 255, 0.30);
+    padding-right: 58%;
+    padding: inherit;
+    font-size: 24px;
+}
+
+.uo1 {
+    border-color: #fd8f25;
+}
+
+.uo2 {
+    color: #d55918;
+}
+
+.uo3 {
+    color: black;
+}
+
+.uo4 {
+    border-color: black;
+}
+
+.uo {
+    border-color: #17598A;
+}
+
+#i {
+    text-align: center;
+    background-color: white;
+}
+
+#botonInactivos {
+    background-color: #17598A;
+    text-align: center;
+    color: white;
+}
+
+#botonRegistro {
+    background-color: #17598A;
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.addy {
+    color: white;
+}
+
+    .addy:hover {
+        color: white;
+    }
+
+#check {
+    border: none;
+    background-color: rgba(0, 185, 255, 0.00);
+}
+
+    #check:hover {
+        background-color: rgba(0, 185, 255, 0.00);
+    }
+
+#f {
+    background-color: rgba(0, 185, 255, 0.14);
+    width: inherit;
+}

@@ -262,6 +262,7 @@
     <Content Include="CSS\Recursos\Operacion.css" />
     <Content Include="CSS\Recursos\Operacion.svg" />
     <Content Include="CSS\Recursos\User.png" />
+    <Content Include="CSS\Terminacion.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
