@@ -4,34 +4,36 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<link href="~/CSS/Terminacion.css" rel="stylesheet" />
+
+<h2>Administracion...</h2>
+<p id="p">Editando Registro de Departamento</p>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Departamento</h4>
+
+    <div class="form-horizontal" id="f">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.id_Departamento)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Nombre, "Departamento",htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="color:green">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <button type="submit" value="Agregar" class="btn btn-default" id="check"><img src="~/CSS/Recursos/comprobar.png"></button> Guardar Cambios
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<button id="botonRegistro" class="btn btn-primary">
+    @Html.ActionLink("Volver al listado", "Index", new { @class = "addy" }, new { @class = "addy" })
+</button>
