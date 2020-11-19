@@ -4,15 +4,16 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<link href="~/CSS/Terminacion.css" rel="stylesheet" />
 
-<h3>Seguro que desea borrar este registro?</h3>
+<p id="p">Eliminando registro de Solicitantes...</p>
+
+<h4 style="color:#ff6a00; font-style:italic">¿Seguro que desea borrar este registro?</h4>
 <div>
-    <h4>Solicitante</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.nombre_Solicitante)
+            Nombre
         </dt>
 
         <dd>
@@ -20,7 +21,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.apellido_Solicitante)
+            Apellido
         </dt>
 
         <dd>
@@ -28,7 +29,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.cedula_Solicitante)
+            Cedula
         </dt>
 
         <dd>
@@ -36,7 +37,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.correo_Solicitante)
+            Correo Electronico
         </dt>
 
         <dd>
@@ -45,12 +46,17 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+
+            <button id="botonRegistro" class="btn btn-primary">
+                @Html.ActionLink("Volver al listado", "Index", new { @class = "addy" }, new { @class = "addy" })
+            </button>
+
+            <input id="botonRegistro" style="background-color:#ff6a00" class="btn btn-primary" type="submit" value="Eliminar" />
         </div>
     }
 </div>
