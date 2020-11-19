@@ -4,15 +4,16 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<link href="~/CSS/Terminacion.css" rel="stylesheet" />
 
-<h3>Seguro que desea borrar este registro?</h3>
+<p id="p">Eliminando registro de Usuario...</p>
+
+<h4 style="color:#ff6a00; font-style:italic">¿Seguro que desea borrar este registro?</h4>
 <div>
-    <h4>Usuario</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.nombre_usuario)
+            Nombre
         </dt>
 
         <dd>
@@ -20,7 +21,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.apellido_usuario)
+            Apellido
         </dt>
 
         <dd>
@@ -28,7 +29,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.rol_usuario)
+            Rol
         </dt>
 
         <dd>
@@ -36,7 +37,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.cedula_usuario)
+            Cedula
         </dt>
 
         <dd>
@@ -44,7 +45,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.correo_usuario)
+            Correo
         </dt>
 
         <dd>
@@ -52,7 +53,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.contraseña_usuario)
+            Contraseña
         </dt>
 
         <dd>
@@ -60,7 +61,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Direccion_usuario)
+            Direccion
         </dt>
 
         <dd>
@@ -69,12 +70,17 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+
+            <button id="botonRegistro" class="btn btn-primary">
+                @Html.ActionLink("Volver al listado", "Index", new { @class = "addy" }, new { @class = "addy" })
+            </button>
+
+            <input id="botonRegistro" style="background-color:#ff6a00" class="btn btn-primary" type="submit" value="Eliminar" />
         </div>
     }
 </div>
