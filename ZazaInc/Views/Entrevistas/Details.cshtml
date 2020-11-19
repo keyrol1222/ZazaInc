@@ -4,14 +4,14 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Contratacion</h2>
+<link href="~/CSS/Terminacion.css" rel="stylesheet" />
+<p id="p">Mostrando detalles...</p>
 
 <div>
-    <h4>Entrevista</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.notas)
+            Notas
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Solicitante.nombre_Solicitante)
+            Nombre del Solicitante
         </dt>
 
         <dd>
@@ -27,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Usuario.nombre_usuario)
+            Usuario
         </dt>
 
         <dd>
@@ -36,7 +36,12 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id_Entrevista }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<button id="botonRegistro" class="btn btn-primary">
+    @Html.ActionLink("Volver al listado", "Index", new { @class = "addy" }, new { @class = "addy" })
+</button>
+
+<button id="botonRegistro" class="btn btn-primary">
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id_Entrevista }, new { @class = "addy" })
+</button>
+
