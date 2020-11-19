@@ -3,38 +3,31 @@
 @{
     ViewBag.Title = "Index";
 }
+    <link href="~/CSS/Terminacion.css" rel="stylesheet" />
+    <h2>Gestionando usuarios...</h2>
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Añadir usuario manualmente", "Create")
-</p>
-<p>
-    @Html.ActionLink("Ver solicitantes", "Index","Solicitantes")
-</p>
-<p>
-    @Html.ActionLink("Ver departamentos", "Index","Departamentoes")
-</p>
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.nombre_usuario)
+            Nombre
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.apellido_usuario)
+            Apellido
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.rol_usuario)
+            Rol
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.cedula_usuario)
+            Cedula
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.correo_usuario)
+            Correo Electronico
         </th>
         
         <th>
-            @Html.DisplayNameFor(model => model.Direccion_usuario)
+            Direccion
         </th>
         <th></th>
     </tr>
@@ -60,12 +53,16 @@
         <td>
             @Html.DisplayFor(modelItem => item.Direccion_usuario)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_usuario }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_usuario }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_usuario })
+        <td id="i">
+            <button class="uo"> <img src="~/CSS/Recursos/lapiz.png"> @Html.ActionLink("Editar", "Edit", new { id = item.id_usuario })</button>
+            <button class="uo1"> <img src="~/CSS/Recursos/informacion.png"> @Html.ActionLink("Detalles", "Details", new { id = item.id_usuario }, new { @class = "uo2" }) </button>
+            <button class="uo4"> <img src="~/CSS/Recursos/eliminar.png"> @Html.ActionLink("Eliminar", "Delete", new { id = item.id_usuario }, new { @class = "uo3" })</button>
         </td>
     </tr>
 }
 
 </table>
+
+<button id="botonRegistro" class="btn btn-primary">
+    @Html.ActionLink("Añadir usuario manualmente", "Create", new { @class = "addy" }, new { @class = "addy" })
+</button>
