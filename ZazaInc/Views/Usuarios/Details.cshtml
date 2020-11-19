@@ -4,14 +4,15 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<link href="~/CSS/Terminacion.css" rel="stylesheet" />
+<p id="p">Mostrando detalles...</p>
+
 
 <div>
-    <h4>Usuario</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.nombre_usuario)
+            Nombre
         </dt>
 
         <dd>
@@ -19,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.apellido_usuario)
+            Apellido
         </dt>
 
         <dd>
@@ -27,7 +28,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.rol_usuario)
+            Rol
         </dt>
 
         <dd>
@@ -35,7 +36,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.cedula_usuario)
+            Cedula
         </dt>
 
         <dd>
@@ -43,7 +44,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.correo_usuario)
+            Correo Electronico
         </dt>
 
         <dd>
@@ -51,7 +52,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.contraseña_usuario)
+            Contraseña
         </dt>
 
         <dd>
@@ -59,7 +60,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Direccion_usuario)
+            Direccion
         </dt>
 
         <dd>
@@ -68,7 +69,11 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id_usuario }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<button id="botonRegistro" class="btn btn-primary">
+    @Html.ActionLink("Volver al listado", "Index", new { @class = "addy" }, new { @class = "addy" })
+</button>
+
+<button id="botonRegistro" class="btn btn-primary" style="background-color:#219fd6">
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id_usuario }, new { @class = "addy" })
+</button>
+
