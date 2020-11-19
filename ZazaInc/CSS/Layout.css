@@ -1,6 +1,9 @@
 ﻿body {
 
-    background-color: white;
+    background-image: url(Recursos/Homee.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 350px;
 
 }
 
@@ -24,7 +27,8 @@
     font-size: 20px;
     background-color: #5992BD;
     color:white;
-    margin-bottom:50px;
+    margin-bottom:100px;
+
 }
 
 #despliegue a {

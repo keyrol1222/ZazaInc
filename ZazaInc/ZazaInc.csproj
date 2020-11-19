@@ -254,7 +254,12 @@
     <Content Include="CSS\Inicio.css" />
     <Content Include="CSS\Layout.css" />
     <Content Include="CSS\Login.css" />
+    <Content Include="CSS\Recursos\eliminar.png" />
     <Content Include="CSS\Recursos\Homee.svg" />
+    <Content Include="CSS\Recursos\informacion.png" />
+    <Content Include="CSS\Recursos\lapiz.png" />
+    <Content Include="CSS\Recursos\Operacion.css" />
+    <Content Include="CSS\Recursos\Operacion.svg" />
     <Content Include="CSS\Recursos\User.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

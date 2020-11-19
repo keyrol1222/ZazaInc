@@ -3,31 +3,29 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-<li>@Html.ActionLink("Actualizar informacion", "Index", "Empleadoes")</li>
-<li>@Html.ActionLink("Gestionar Vacaciones", "Index", "Vacaciones")</li>
+<link href="~/CSS/Recursos/Operacion.css" rel="stylesheet" />
+<h2>Gestionando vacaciones...</h2>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.fecha_inicio)
+            Fecha Inicio
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fecha_final)
+            Fecha Final
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Empleado.nombre_empleado)
+            Nombre de Empleado
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Usuario.nombre_usuario)
+            Usuario
         </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        
+
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.fecha_inicio)
@@ -41,15 +39,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Usuario.nombre_usuario)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id_vacaciones }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id_vacaciones }) |
-                <!--@Html.ActionLink("Delete", "Delete", new { id = item.id_vacaciones })-->
+            <td id="i">
+                <button class="uo"> <img src="~/CSS/Recursos/lapiz.png"> @Html.ActionLink("Editar", "Edit", new { id = item.id_vacaciones })</button>
+                <button class="uo1"> <img src="~/CSS/Recursos/informacion.png"> @Html.ActionLink("Detalles", "Details", new { id = item.id_vacaciones }, new { @class = "uo2" }) </button>
+                <button class="uo4"> <img src="~/CSS/Recursos/eliminar.png"> @Html.ActionLink("Eliminar", "Delete", new { id = item.id_vacaciones } , new { @class = "uo3" })</button>
             </td>
+
         </tr>
-        }
-    
+    }
+
 </table>
-<p>
-    @Html.ActionLink("Registrar vacaciones", "Create")
-</p>
+<button id="botonRegistro" class="btn btn-primary">
+    @Html.ActionLink("Registrar vacaciones", "Create", new { @class = "addy" }, new { @class = "addy" })
+</button>

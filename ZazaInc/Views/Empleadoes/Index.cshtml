@@ -11,11 +11,15 @@
     }
 
 }
-<h2>Registro De Empleados</h2>
-<li>@Html.ActionLink("Actualizar informacion", "Index", "Empleadoes")</li>
-<li>@Html.ActionLink("Gestionar Vacaciones", "Index", "Vacaciones")</li>
 
-<table class="table">
+<link href="~/CSS/Recursos/Operacion.css" rel="stylesheet" />
+
+<h2>Actualizando informacion y sueldos...</h2>
+
+
+<table class="table" id="tablas">
+
+    <text>Datos y Nómina del empleado</text>
     <tr>
         <th>
             Nombre
@@ -34,69 +38,73 @@
             Sueldo
         </th>
         <th>
-            horario
+            Horario
         </th>
         <th>
-            id del departamento
+            ID del departamento
         </th>
         @if (rol == "admin")
         {
-            <th></th>}
-        </tr>
+            <th></th>
+        }
+    </tr>
 
     @foreach (var item in Model)
     {
         if (item.estado != "inactivo")
         {
-<tr>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.nombre_empleado)  @Html.DisplayFor(modelItem => item.apellido_empleado)
-    </td>
+            <tr>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.posicion_empleado)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.cedula_empleado)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.correo_usuario)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.pago_empleado)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.horario_empleado)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.departamento)
-    </td>
-    @if(rol == "admin") {
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.id_empleado }) |
-        @Html.ActionLink("Details", "Details", new { id = item.id_empleado }) |
-        <!--@Html.ActionLink("Delete", "Delete", new { id = item.id_empleado })-->
-    </td>}
-</tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre_empleado)  @Html.DisplayFor(modelItem => item.apellido_empleado)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.posicion_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cedula_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.correo_usuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pago_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.horario_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.departamento)
+                </td>
+                @if (rol == "admin")
+                {
+                    <td id="i">
+                        <button class="uo"> <img src="~/CSS/Recursos/lapiz.png"> @Html.ActionLink("Editar", "Edit", new { id = item.id_empleado })</button>
+                        <button class="uo1"> <img src="~/CSS/Recursos/informacion.png"> @Html.ActionLink("Detalles", "Details", new { id = item.id_empleado }, new { @class = "uo2" }) </button>
+
+                    </td>
+                }
+            </tr>
         }
     }
 </table>
 
 
-<p>
-    @Html.ActionLink("Añadir registro", "Create")
-</p>
+<button id="botonRegistro" class="btn btn-primary">
+    @Html.ActionLink("Añadir registro", "Create", new { @class="addy"}, new { @class="addy"})
+</button>
 
-<br />
 
-<button onclick="myFunction()">Mostrar inactivos</button>
+<p id="p">Lista de empleados inactivos</p>
+<button id="botonInactivos" class="btn btn-primary" onclick="myFunction()">Mostrar inactivos</button>
 
 
 <table class="table" id="myDIV">
-    <tr>
-        <th> Inactivos</th>
-    </tr>
+
+
+
     <tr>
         <th>
             Nombre
@@ -115,52 +123,57 @@
             Sueldo
         </th>
         <th>
-            horario
+            Horario
         </th>
         <th>
-            id del departamento
+            ID del departamento
         </th>
         @if (rol == "admin")
         {
-            <th></th>}
-        </tr>
+            <th></th>
+        }
+    </tr>
 
     @foreach (var item in Model)
     {
         if (item.estado == "inactivo")
         {
-<tr>
+            <tr>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.nombre_empleado) @Html.DisplayFor(modelItem => item.apellido_empleado)
-    </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre_empleado) @Html.DisplayFor(modelItem => item.apellido_empleado)
+                </td>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.posicion_empleado)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.cedula_empleado)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.correo_usuario)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.pago_empleado)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.horario_empleado)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.departamento)
-    </td>
-    @if (rol == "admin")
-    {
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.id_empleado }) |
-            @Html.ActionLink("Details", "Details", new { id = item.id_empleado }) |
-            <!--@Html.ActionLink("Delete", "Delete", new { id = item.id_empleado })-->
-        </td>}
-    </tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.posicion_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cedula_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.correo_usuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pago_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.horario_empleado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.departamento)
+                </td>
+                @if (rol == "admin")
+                {
+
+                    <td id="i">
+                        <button class="uo"> <img src="~/CSS/Recursos/lapiz.png"> @Html.ActionLink("Editar", "Edit", new { id = item.id_empleado })</button>
+                        <button class="uo1"> <img src="~/CSS/Recursos/informacion.png"> @Html.ActionLink("Detalles", "Details", new { id = item.id_empleado }, new { @class = "uo2" }) </button>
+
+                    </td>
+
+                }
+            </tr>
+
         }
     }
 </table>
