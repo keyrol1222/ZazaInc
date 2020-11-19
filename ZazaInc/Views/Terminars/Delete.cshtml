@@ -3,16 +3,15 @@
 @{
     ViewBag.Title = "Delete";
 }
+    <link href="~/CSS/Terminacion.css" rel="stylesheet" />
+    <p id="p">Eliminando registro de terminacion...</p>
 
-<h2>Terminacion laboral</h2>
-
-<h3>Seguro que desea borrar este registro?</h3>
+<h4 style="color:#ff6a00; font-style:italic">¿Seguro que desea borrar este registro?</h4>
 <div>
-    <h4>Terminar</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.razon)
+            Razon
         </dt>
 
         <dd>
@@ -20,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Empleado.nombre_empleado)
+            Nombre del Empleado
         </dt>
 
         <dd>
@@ -28,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Usuario.nombre_usuario)
+            Usuario
         </dt>
 
         <dd>
@@ -37,12 +36,17 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+
+            <button id="botonRegistro" class="btn btn-primary">
+                @Html.ActionLink("Volver al listado", "Index", new { @class = "addy" }, new { @class = "addy" })
+            </button>
+
+            <input id="botonRegistro" style="background-color:#ff6a00" class="btn btn-primary" type="submit" value="Eliminar" />
         </div>
     }
 </div>
