@@ -254,6 +254,7 @@
     <Content Include="CSS\Inicio.css" />
     <Content Include="CSS\Layout.css" />
     <Content Include="CSS\Login.css" />
+    <Content Include="CSS\Recursos\comprobar.png" />
     <Content Include="CSS\Recursos\eliminar.png" />
     <Content Include="CSS\Recursos\Homee.svg" />
     <Content Include="CSS\Recursos\informacion.png" />

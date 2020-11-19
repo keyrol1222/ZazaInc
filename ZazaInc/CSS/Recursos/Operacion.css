@@ -106,3 +106,17 @@ text {
 .addy:hover {
     color: white;
 }
+
+#check {
+    border: none;
+    background-color: rgba(0, 185, 255, 0.00);
+}
+
+    #check:hover {
+        background-color: rgba(0, 185, 255, 0.00);
+    }
+
+#f {
+    background-color: rgba(0, 185, 255, 0.14);
+    width:inherit;
+}
