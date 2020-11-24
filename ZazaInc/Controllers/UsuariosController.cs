@@ -93,7 +93,8 @@ namespace ZazaInc.Controllers
         {
             if (ModelState.IsValid)
             {
-                usuario.contraseña_usuario = usuario.contraseña_usuario;
+                var x = db.Usuarios.FirstOrDefault(e => e.id_usuario == usuario.id_usuario);
+                usuario.contraseña_usuario = x.contraseña_usuario;
                 db.Entry(usuario).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

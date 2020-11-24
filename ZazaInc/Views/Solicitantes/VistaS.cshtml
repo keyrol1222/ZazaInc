@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ZazaInc.Models.Solicitante>
+
+@{
+    ViewBag.Title = "VistaS";
+}
+
+<h2>VistaS</h2>
+
+ 
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre_Solicitante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellido_Solicitante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cedula_Solicitante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.correo_Solicitante)
+        </th>
+     
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre_Solicitante)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellido_Solicitante)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cedula_Solicitante)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.correo_Solicitante)
+        </td>
+       
+    </tr>
+}
+
+</table>

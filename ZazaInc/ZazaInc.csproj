@@ -351,6 +351,7 @@
     <Content Include="Views\Departamentoes\Details.cshtml" />
     <Content Include="Views\Departamentoes\Edit.cshtml" />
     <Content Include="Views\Departamentoes\Index.cshtml" />
+    <Content Include="Views\Solicitantes\VistaS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

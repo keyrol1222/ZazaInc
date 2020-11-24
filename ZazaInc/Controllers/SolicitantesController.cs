@@ -19,7 +19,10 @@ namespace ZazaInc.Controllers
         {
             return View(db.Solicitantes.ToList());
         }
-
+        public ActionResult VistaS()
+        {
+            return View(db.Solicitantes.ToList());
+        }
         // GET: Solicitantes/Details/5
         public ActionResult Details(int? id)
         {
