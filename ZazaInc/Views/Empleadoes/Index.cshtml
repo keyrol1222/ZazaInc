@@ -93,13 +93,13 @@
 
 
 <button id="botonRegistro" class="btn btn-primary">
-    @Html.ActionLink("Añadir registro", "Create", new { @class="addy"}, new { @class="addy"})
+    @Html.ActionLink("Añadir registro", "Create", new { @class = "addy" }, new { @class = "addy" })
 </button>
 
 
 <p id="p">Lista de empleados inactivos</p>
 <button id="botonInactivos" class="btn btn-primary" onclick="myFunction()">Mostrar inactivos</button>
-
+@Html.ActionLink("Exportar", "ExportCSV_Employee", "Empleadoes", null, new { @class = "btn btn-primary" })
 
 <table class="table" id="myDIV">
 
