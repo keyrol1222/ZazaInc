@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZAZA Management SRL</title>
+    <link href="~/CSS/RedesSociales.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     
@@ -11,12 +12,32 @@
 
 <body>
 
+
     @if (!User.Identity.IsAuthenticated)
     {
 
 
 
         <link href="~/CSS/Login.css" rel="stylesheet" />
+        <div class="social">
+            <ul>
+                <li>
+                    <a href="https://www.facebook.com/ZAZA-Management-105890051355006/" target="_blank" class="icon-facebook">
+                        <img src="~/CSS/Recursos/facebook.png" alt="50px" width="50" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://instagram.com/zazamanagement?igshid=1uhsrp9w2jntg" target="_blank" class="icon-instagram">
+                        <img src="~/CSS/Recursos/instagram.png" alt="50px" width="50" />
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:Zazamanagement@outlook.es" class="icon-mail">
+                        <img src="~/CSS/Recursos/correo-electronico.png" alt="50px" width="50" />
+                    </a>
+                </li>
+            </ul>
+        </div>
 
         <div class="page">
             <div class="container">
@@ -24,7 +45,7 @@
                     <div class="login">ZAZA</div>
                     <div class="eula">
                         Bienvenido querido usuario, inicia sesion para gestionar el departamento de Recursos Humanos. <br /><br />
-                        
+
                         <br /><br />
                     </div>
                 </div>
@@ -143,26 +164,26 @@
     {
 
         <link href="~/CSS/Layout.css" rel="stylesheet" />
-            
-            <div class="container">
-                <div class="navbar-header">
-                    <!--Apartado Responsive-->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
 
-                @{var cookie = Request.Cookies["myCookie"];
-                    var rol = "";
-                    if (cookie != null)
-                    {
-                        rol = cookie.Values["Rol"].ToString();
-                    }
+        <div class="container">
+            <div class="navbar-header">
+                <!--Apartado Responsive-->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
 
+            @{var cookie = Request.Cookies["myCookie"];
+                var rol = "";
+                if (cookie != null)
+                {
+                    rol = cookie.Values["Rol"].ToString();
                 }
-                
+
+            }
+
             <div class="navbar navbar-inverse navbar-fixed-top" id="despliegue">
 
                 @if (rol == "admin")
