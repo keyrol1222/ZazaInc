@@ -92,104 +92,108 @@
 </table>
 
 
+<button id="botonRegistro" style="background-color: green" class="btn btn-primary">
+    <img src="~/CSS/Recursos/sobresalir.png">
+    @Html.ActionLink("Exportar", "ExportCSV_Employee",new { @class = "addy" }, new { @class = "addy" })
 
-@Html.ActionLink("Exportar", "ExportCSV_Employee", "Empleadoes", null, new { @class = "btn btn-primary" })
-@if (rol == "admin")
-{
-    <button id="botonRegistro" class="btn btn-primary">
-        @Html.ActionLink("Añadir registro", "Create", new { @class = "addy" }, new { @class = "addy" })
-    </button>
-    <p id="p">Lista de empleados inactivos</p>
-    <button id="botonInactivos" class="btn btn-primary" onclick="myFunction()">Mostrar inactivos</button>
+</button>
+
+    @if (rol == "admin")
+    {
+        <button id="botonRegistro" class="btn btn-primary">
+            @Html.ActionLink("Añadir registro", "Create", new { @class = "addy" }, new { @class = "addy" })
+        </button>
+        <p id="p">Lista de empleados inactivos</p>
+        <button id="botonInactivos" class="btn btn-primary" onclick="myFunction()">Mostrar inactivos</button>
 
 
-    <table class="table" id="myDIV">
+        <table class="table" id="myDIV">
 
 
 
-        <tr>
-            <th>
-                Nombre
-            </th>
+            <tr>
+                <th>
+                    Nombre
+                </th>
 
-            <th>
-                Puesto
-            </th>
-            <th>
-                Cedula
-            </th>
-            <th>
-                Correo
-            </th>
-            <th>
-                Sueldo
-            </th>
-            <th>
-                Horario
-            </th>
-            <th>
-                ID del departamento
-            </th>
-            @if (rol == "admin")
+                <th>
+                    Puesto
+                </th>
+                <th>
+                    Cedula
+                </th>
+                <th>
+                    Correo
+                </th>
+                <th>
+                    Sueldo
+                </th>
+                <th>
+                    Horario
+                </th>
+                <th>
+                    ID del departamento
+                </th>
+                @if (rol == "admin")
+                {
+                    <th></th>
+                }
+            </tr>
+
+            @foreach (var item in Model)
             {
-                <th></th>
-            }
-        </tr>
+                if (item.estado == "inactivo")
+                {
+                    <tr>
 
-        @foreach (var item in Model)
-        {
-            if (item.estado == "inactivo")
-            {
-                <tr>
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.nombre_empleado) @Html.DisplayFor(modelItem => item.apellido_empleado)
-                    </td>
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.posicion_empleado)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.cedula_empleado)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.correo_usuario)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.pago_empleado)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.horario_empleado)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.departamento)
-                    </td>
-                    @if (rol == "admin")
-                    {
-
-                        <td id="i">
-                            <button class="uo"> <img src="~/CSS/Recursos/lapiz.png"> @Html.ActionLink("Editar", "Edit", new { id = item.id_empleado })</button>
-                            <button class="uo1"> <img src="~/CSS/Recursos/informacion.png"> @Html.ActionLink("Detalles", "Details", new { id = item.id_empleado }, new { @class = "uo2" }) </button>
-
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nombre_empleado) @Html.DisplayFor(modelItem => item.apellido_empleado)
                         </td>
 
-                    }
-                </tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.posicion_empleado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.cedula_empleado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.correo_usuario)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.pago_empleado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.horario_empleado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.departamento)
+                        </td>
+                        @if (rol == "admin")
+                        {
 
+                            <td id="i">
+                                <button class="uo"> <img src="~/CSS/Recursos/lapiz.png"> @Html.ActionLink("Editar", "Edit", new { id = item.id_empleado })</button>
+                                <button class="uo1"> <img src="~/CSS/Recursos/informacion.png"> @Html.ActionLink("Detalles", "Details", new { id = item.id_empleado }, new { @class = "uo2" }) </button>
+
+                            </td>
+
+                        }
+                    </tr>
+
+                }
+            }
+        </table>
+    }
+    <script>
+        var x = document.getElementById("myDIV");
+        x.style.display = "none";
+
+        function myFunction() {
+
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
             }
         }
-    </table>
-}
-<script>
-    var x = document.getElementById("myDIV");
-    x.style.display = "none";
-
-    function myFunction() {
-
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-    }
-</script>
+    </script>

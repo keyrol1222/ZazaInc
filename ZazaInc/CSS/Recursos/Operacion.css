@@ -97,6 +97,11 @@ text {
     color: white;
     margin-bottom: 20px;
 }
+#botonRegistro:visited{
+    
+    color: white;
+    
+}
 
 .addy {
 
@@ -106,6 +111,14 @@ text {
 .addy:hover {
     color: white;
 }
+
+    .addy:active {
+        color: white;
+    }
+
+    .addy:visited {
+        color: white;
+    }
 
 #check {
     border: none;
@@ -120,3 +133,4 @@ text {
     background-color: rgba(0, 185, 255, 0.14);
     width:inherit;
 }
+

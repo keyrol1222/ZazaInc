@@ -264,6 +264,7 @@
     <Content Include="CSS\Recursos\lapiz.png" />
     <Content Include="CSS\Recursos\Operacion.css" />
     <Content Include="CSS\Recursos\Operacion.svg" />
+    <Content Include="CSS\Recursos\sobresalir.png" />
     <Content Include="CSS\Recursos\User.png" />
     <Content Include="CSS\RedesSociales.css" />
     <Content Include="CSS\Terminacion.css" />
