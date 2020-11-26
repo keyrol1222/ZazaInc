@@ -58,7 +58,7 @@ namespace ZazaInc.Controllers
                 }
                 else
                 {
-                    usuario.rol_usuario = "Solicitante";
+                    usuario.rol_usuario = "no especificado";
                 }
 
                 db.Usuarios.Add(usuario);
@@ -94,7 +94,9 @@ namespace ZazaInc.Controllers
             if (ModelState.IsValid)
             {
                 var x = db.Usuarios.FirstOrDefault(e => e.id_usuario == usuario.id_usuario);
+
                 usuario.contraseña_usuario = x.contraseña_usuario;
+                
                 db.Entry(usuario).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
